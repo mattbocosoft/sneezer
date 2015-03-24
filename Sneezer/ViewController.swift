@@ -9,6 +9,8 @@
 import UIKit
 import CoreBluetooth
 import CoreLocation
+import AudioToolbox
+
 
 class ViewController: UIViewController, CBPeripheralManagerDelegate {
 
@@ -35,10 +37,21 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
 		{
 			self.beaconManager?.delegate = self
 		}
+    }
+    
+    @IBAction func sneezeButtonTapped() {
         self.updateAdvertisedRegion()
-	}
+        let path : NSString? = NSBundle.mainBundle().pathForResource("FactorySneeze", ofType: "m4a")!
+        let url = NSURL(fileURLWithPath: path!)
+ 
+        var mySound: SystemSoundID = 0
+        AudioServicesCreateSystemSoundID(url, &mySound)
+        // Play
+        AudioServicesPlaySystemSound(mySound)
+        
+    }
 	
-	func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager!) {
+    func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager!) {
 
 	}
 	

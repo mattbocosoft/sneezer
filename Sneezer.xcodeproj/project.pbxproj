@@ -16,6 +16,8 @@
 		7DF431611AC1DB3100A3B11D /* SneezeHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF431601AC1DB3100A3B11D /* SneezeHost.swift */; };
 		7DF431641AC1F8DA00A3B11D /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF431621AC1F8DA00A3B11D /* CoreBluetooth.framework */; };
 		7DF431651AC1F8DA00A3B11D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF431631AC1F8DA00A3B11D /* CoreLocation.framework */; };
+		7DF431671AC2048D00A3B11D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF431661AC2048D00A3B11D /* AudioToolbox.framework */; };
+		7DF431691AC205AD00A3B11D /* FactorySneeze.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DF431681AC205AD00A3B11D /* FactorySneeze.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		7DF431601AC1DB3100A3B11D /* SneezeHost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SneezeHost.swift; sourceTree = "<group>"; };
 		7DF431621AC1F8DA00A3B11D /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		7DF431631AC1F8DA00A3B11D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		7DF431661AC2048D00A3B11D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		7DF431681AC205AD00A3B11D /* FactorySneeze.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = FactorySneeze.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DF431671AC2048D00A3B11D /* AudioToolbox.framework in Frameworks */,
 				7DF431641AC1F8DA00A3B11D /* CoreBluetooth.framework in Frameworks */,
 				7DF431651AC1F8DA00A3B11D /* CoreLocation.framework in Frameworks */,
 			);
@@ -67,6 +72,7 @@
 		7DF0A38F1AC1A3BD00AF1EFA = {
 			isa = PBXGroup;
 			children = (
+				7DF431661AC2048D00A3B11D /* AudioToolbox.framework */,
 				7DF431621AC1F8DA00A3B11D /* CoreBluetooth.framework */,
 				7DF431631AC1F8DA00A3B11D /* CoreLocation.framework */,
 				7DF0A39A1AC1A3BD00AF1EFA /* Sneezer */,
@@ -101,6 +107,7 @@
 		7DF0A39B1AC1A3BD00AF1EFA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7DF431681AC205AD00A3B11D /* FactorySneeze.m4a */,
 				7DF0A39C1AC1A3BD00AF1EFA /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -207,6 +214,7 @@
 				7DF0A3A31AC1A3BD00AF1EFA /* Main.storyboard in Resources */,
 				7DF0A3A81AC1A3BD00AF1EFA /* LaunchScreen.xib in Resources */,
 				7DF0A3A51AC1A3BD00AF1EFA /* Images.xcassets in Resources */,
+				7DF431691AC205AD00A3B11D /* FactorySneeze.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
