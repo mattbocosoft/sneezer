@@ -13,6 +13,7 @@
 		7DF0A3A51AC1A3BD00AF1EFA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DF0A3A41AC1A3BD00AF1EFA /* Images.xcassets */; };
 		7DF0A3A81AC1A3BD00AF1EFA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DF0A3A61AC1A3BD00AF1EFA /* LaunchScreen.xib */; };
 		7DF0A3B41AC1A3BD00AF1EFA /* SneezerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF0A3B31AC1A3BD00AF1EFA /* SneezerTests.swift */; };
+		7DF431611AC1DB3100A3B11D /* SneezeHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF431601AC1DB3100A3B11D /* SneezeHost.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		7DF0A3AD1AC1A3BD00AF1EFA /* SneezerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SneezerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DF0A3B21AC1A3BD00AF1EFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DF0A3B31AC1A3BD00AF1EFA /* SneezerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SneezerTests.swift; sourceTree = "<group>"; };
+		7DF431601AC1DB3100A3B11D /* SneezeHost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SneezeHost.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				7DF0A39D1AC1A3BD00AF1EFA /* AppDelegate.swift */,
 				7DF0A39F1AC1A3BD00AF1EFA /* ViewController.swift */,
 				7DF0A3A11AC1A3BD00AF1EFA /* Main.storyboard */,
+				7DF431601AC1DB3100A3B11D /* SneezeHost.swift */,
 				7DF0A3A41AC1A3BD00AF1EFA /* Images.xcassets */,
 				7DF0A3A61AC1A3BD00AF1EFA /* LaunchScreen.xib */,
 				7DF0A39B1AC1A3BD00AF1EFA /* Supporting Files */,
@@ -161,6 +164,7 @@
 				TargetAttributes = {
 					7DF0A3971AC1A3BD00AF1EFA = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 23CBJ269V9;
 					};
 					7DF0A3AC1AC1A3BD00AF1EFA = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -213,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DF0A3A01AC1A3BD00AF1EFA /* ViewController.swift in Sources */,
+				7DF431611AC1DB3100A3B11D /* SneezeHost.swift in Sources */,
 				7DF0A39E1AC1A3BD00AF1EFA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,9 +343,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: AllscriptsMisys Healthcare Solutions, Inc";
 				INFOPLIST_FILE = Sneezer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d43e5a41-1631-47c4-b9d8-dea13daa10e1";
 			};
 			name = Debug;
 		};
@@ -348,9 +355,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: AllscriptsMisys Healthcare Solutions, Inc";
 				INFOPLIST_FILE = Sneezer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d43e5a41-1631-47c4-b9d8-dea13daa10e1";
 			};
 			name = Release;
 		};
@@ -407,6 +416,7 @@
 				7DF0A3B91AC1A3BD00AF1EFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7DF0A3BA1AC1A3BD00AF1EFA /* Build configuration list for PBXNativeTarget "SneezerTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +425,7 @@
 				7DF0A3BC1AC1A3BD00AF1EFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
