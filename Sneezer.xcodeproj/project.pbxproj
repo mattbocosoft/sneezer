@@ -1,0 +1,422 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7DF0A39E1AC1A3BD00AF1EFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF0A39D1AC1A3BD00AF1EFA /* AppDelegate.swift */; };
+		7DF0A3A01AC1A3BD00AF1EFA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF0A39F1AC1A3BD00AF1EFA /* ViewController.swift */; };
+		7DF0A3A31AC1A3BD00AF1EFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DF0A3A11AC1A3BD00AF1EFA /* Main.storyboard */; };
+		7DF0A3A51AC1A3BD00AF1EFA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DF0A3A41AC1A3BD00AF1EFA /* Images.xcassets */; };
+		7DF0A3A81AC1A3BD00AF1EFA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DF0A3A61AC1A3BD00AF1EFA /* LaunchScreen.xib */; };
+		7DF0A3B41AC1A3BD00AF1EFA /* SneezerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF0A3B31AC1A3BD00AF1EFA /* SneezerTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7DF0A3AE1AC1A3BD00AF1EFA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7DF0A3901AC1A3BD00AF1EFA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7DF0A3971AC1A3BD00AF1EFA;
+			remoteInfo = Sneezer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7DF0A3981AC1A3BD00AF1EFA /* Sneezer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sneezer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DF0A39C1AC1A3BD00AF1EFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7DF0A39D1AC1A3BD00AF1EFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7DF0A39F1AC1A3BD00AF1EFA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7DF0A3A21AC1A3BD00AF1EFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7DF0A3A41AC1A3BD00AF1EFA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7DF0A3A71AC1A3BD00AF1EFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		7DF0A3AD1AC1A3BD00AF1EFA /* SneezerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SneezerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DF0A3B21AC1A3BD00AF1EFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7DF0A3B31AC1A3BD00AF1EFA /* SneezerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SneezerTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7DF0A3951AC1A3BD00AF1EFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7DF0A3AA1AC1A3BD00AF1EFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7DF0A38F1AC1A3BD00AF1EFA = {
+			isa = PBXGroup;
+			children = (
+				7DF0A39A1AC1A3BD00AF1EFA /* Sneezer */,
+				7DF0A3B01AC1A3BD00AF1EFA /* SneezerTests */,
+				7DF0A3991AC1A3BD00AF1EFA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7DF0A3991AC1A3BD00AF1EFA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7DF0A3981AC1A3BD00AF1EFA /* Sneezer.app */,
+				7DF0A3AD1AC1A3BD00AF1EFA /* SneezerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7DF0A39A1AC1A3BD00AF1EFA /* Sneezer */ = {
+			isa = PBXGroup;
+			children = (
+				7DF0A39D1AC1A3BD00AF1EFA /* AppDelegate.swift */,
+				7DF0A39F1AC1A3BD00AF1EFA /* ViewController.swift */,
+				7DF0A3A11AC1A3BD00AF1EFA /* Main.storyboard */,
+				7DF0A3A41AC1A3BD00AF1EFA /* Images.xcassets */,
+				7DF0A3A61AC1A3BD00AF1EFA /* LaunchScreen.xib */,
+				7DF0A39B1AC1A3BD00AF1EFA /* Supporting Files */,
+			);
+			path = Sneezer;
+			sourceTree = "<group>";
+		};
+		7DF0A39B1AC1A3BD00AF1EFA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7DF0A39C1AC1A3BD00AF1EFA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7DF0A3B01AC1A3BD00AF1EFA /* SneezerTests */ = {
+			isa = PBXGroup;
+			children = (
+				7DF0A3B31AC1A3BD00AF1EFA /* SneezerTests.swift */,
+				7DF0A3B11AC1A3BD00AF1EFA /* Supporting Files */,
+			);
+			path = SneezerTests;
+			sourceTree = "<group>";
+		};
+		7DF0A3B11AC1A3BD00AF1EFA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7DF0A3B21AC1A3BD00AF1EFA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7DF0A3971AC1A3BD00AF1EFA /* Sneezer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7DF0A3B71AC1A3BD00AF1EFA /* Build configuration list for PBXNativeTarget "Sneezer" */;
+			buildPhases = (
+				7DF0A3941AC1A3BD00AF1EFA /* Sources */,
+				7DF0A3951AC1A3BD00AF1EFA /* Frameworks */,
+				7DF0A3961AC1A3BD00AF1EFA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sneezer;
+			productName = Sneezer;
+			productReference = 7DF0A3981AC1A3BD00AF1EFA /* Sneezer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7DF0A3AC1AC1A3BD00AF1EFA /* SneezerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7DF0A3BA1AC1A3BD00AF1EFA /* Build configuration list for PBXNativeTarget "SneezerTests" */;
+			buildPhases = (
+				7DF0A3A91AC1A3BD00AF1EFA /* Sources */,
+				7DF0A3AA1AC1A3BD00AF1EFA /* Frameworks */,
+				7DF0A3AB1AC1A3BD00AF1EFA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7DF0A3AF1AC1A3BD00AF1EFA /* PBXTargetDependency */,
+			);
+			name = SneezerTests;
+			productName = SneezerTests;
+			productReference = 7DF0A3AD1AC1A3BD00AF1EFA /* SneezerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7DF0A3901AC1A3BD00AF1EFA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "William Loftus";
+				TargetAttributes = {
+					7DF0A3971AC1A3BD00AF1EFA = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					7DF0A3AC1AC1A3BD00AF1EFA = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 7DF0A3971AC1A3BD00AF1EFA;
+					};
+				};
+			};
+			buildConfigurationList = 7DF0A3931AC1A3BD00AF1EFA /* Build configuration list for PBXProject "Sneezer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7DF0A38F1AC1A3BD00AF1EFA;
+			productRefGroup = 7DF0A3991AC1A3BD00AF1EFA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7DF0A3971AC1A3BD00AF1EFA /* Sneezer */,
+				7DF0A3AC1AC1A3BD00AF1EFA /* SneezerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7DF0A3961AC1A3BD00AF1EFA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DF0A3A31AC1A3BD00AF1EFA /* Main.storyboard in Resources */,
+				7DF0A3A81AC1A3BD00AF1EFA /* LaunchScreen.xib in Resources */,
+				7DF0A3A51AC1A3BD00AF1EFA /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7DF0A3AB1AC1A3BD00AF1EFA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7DF0A3941AC1A3BD00AF1EFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DF0A3A01AC1A3BD00AF1EFA /* ViewController.swift in Sources */,
+				7DF0A39E1AC1A3BD00AF1EFA /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7DF0A3A91AC1A3BD00AF1EFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DF0A3B41AC1A3BD00AF1EFA /* SneezerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7DF0A3AF1AC1A3BD00AF1EFA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7DF0A3971AC1A3BD00AF1EFA /* Sneezer */;
+			targetProxy = 7DF0A3AE1AC1A3BD00AF1EFA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7DF0A3A11AC1A3BD00AF1EFA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7DF0A3A21AC1A3BD00AF1EFA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7DF0A3A61AC1A3BD00AF1EFA /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7DF0A3A71AC1A3BD00AF1EFA /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7DF0A3B51AC1A3BD00AF1EFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7DF0A3B61AC1A3BD00AF1EFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7DF0A3B81AC1A3BD00AF1EFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Sneezer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7DF0A3B91AC1A3BD00AF1EFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Sneezer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		7DF0A3BB1AC1A3BD00AF1EFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SneezerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sneezer.app/Sneezer";
+			};
+			name = Debug;
+		};
+		7DF0A3BC1AC1A3BD00AF1EFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SneezerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sneezer.app/Sneezer";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7DF0A3931AC1A3BD00AF1EFA /* Build configuration list for PBXProject "Sneezer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7DF0A3B51AC1A3BD00AF1EFA /* Debug */,
+				7DF0A3B61AC1A3BD00AF1EFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7DF0A3B71AC1A3BD00AF1EFA /* Build configuration list for PBXNativeTarget "Sneezer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7DF0A3B81AC1A3BD00AF1EFA /* Debug */,
+				7DF0A3B91AC1A3BD00AF1EFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7DF0A3BA1AC1A3BD00AF1EFA /* Build configuration list for PBXNativeTarget "SneezerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7DF0A3BB1AC1A3BD00AF1EFA /* Debug */,
+				7DF0A3BC1AC1A3BD00AF1EFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7DF0A3901AC1A3BD00AF1EFA /* Project object */;
+}
