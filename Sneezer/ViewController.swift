@@ -11,48 +11,74 @@ import CoreBluetooth
 import CoreLocation
 import AudioToolbox
 
+class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationManagerDelegate {
 
-class ViewController: UIViewController, CBPeripheralManagerDelegate {
+	// Be the Beacon
+	var beaconManager: CBPeripheralManager?
+	var sneezingBeacons: [AnyObject]!
 
-    var beaconManager: CBPeripheralManager?
-    
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
+	// Hear the Beacon
+	var locationManager: CLLocationManager?
+
+	required init(coder aDecoder: NSCoder) {
+
+		super.init(coder: aDecoder)
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-	
+
+	override func viewDidLoad() {
+		super.viewDidLoad()
+
+		// Listen for sneezing beacons
+		self.locationManager = CLLocationManager()
+		self.locationManager?.delegate = self
+
+		self.sneezingBeacons = [AnyObject]()
+		let region: CLBeaconRegion = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "5EC30DE0-4710-470F-A26C-A37FBCEFE1D4"), identifier: "com.SneezerApp")
+	}
+
 	override func viewDidAppear(animated: Bool) {
 
 		super.viewDidAppear(animated)
 
-		if self.beaconManager == nil {
-
-			self.beaconManager = CBPeripheralManager(delegate: self, queue: nil)
-		}
-		else
-		{
-			self.beaconManager?.delegate = self
-		}
+		// Broadcast sneezes
+		self.beaconManager = CBPeripheralManager(delegate: self, queue: nil)
+		self.beaconManager?.delegate = self
     }
-    
+
+	func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager!) {
+		
+	}
+
+	func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
+
+		self.sneezingBeacons = beacons
+
+		for beacon: CLBeacon in self.sneezingBeacons as [CLBeacon]! {
+
+			println("Found beacon with proximity \(beacon.proximity)")
+		}
+
+		if self.sneezingBeacons.count > 0 {
+			// Play "Bless You"
+			self.playSoundEffect("BlessYou")
+		}
+	}
+	
     @IBAction func sneezeButtonTapped() {
         self.updateAdvertisedRegion()
-        let path : NSString? = NSBundle.mainBundle().pathForResource("FactorySneeze", ofType: "m4a")!
-        let url = NSURL(fileURLWithPath: path!)
- 
-        var mySound: SystemSoundID = 0
-        AudioServicesCreateSystemSoundID(url, &mySound)
-        // Play
-        AudioServicesPlaySystemSound(mySound)
-        
+
+		self.playSoundEffect("FactorySneeze")
     }
 	
-    func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager!) {
+	func playSoundEffect(filename: String) {
 
+		let path : NSString? = NSBundle.mainBundle().pathForResource(filename, ofType: "m4a")!
+		let url = NSURL(fileURLWithPath: path!)
+		
+		var mySound: SystemSoundID = 0
+		AudioServicesCreateSystemSoundID(url, &mySound)
+		// Play
+		AudioServicesPlaySystemSound(mySound)
 	}
 	
 	func updateAdvertisedRegion() {
