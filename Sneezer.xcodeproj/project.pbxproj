@@ -74,9 +74,6 @@
 		7DF0A38F1AC1A3BD00AF1EFA = {
 			isa = PBXGroup;
 			children = (
-				7DF431661AC2048D00A3B11D /* AudioToolbox.framework */,
-				7DF431621AC1F8DA00A3B11D /* CoreBluetooth.framework */,
-				7DF431631AC1F8DA00A3B11D /* CoreLocation.framework */,
 				7DF0A39A1AC1A3BD00AF1EFA /* Sneezer */,
 				7DF0A3B01AC1A3BD00AF1EFA /* SneezerTests */,
 				7DF0A3991AC1A3BD00AF1EFA /* Products */,
@@ -112,6 +109,9 @@
 				7DF4316A1AC20BA500A3B11D /* BlessYou.m4a */,
 				7DF431681AC205AD00A3B11D /* FactorySneeze.m4a */,
 				7DF0A39C1AC1A3BD00AF1EFA /* Info.plist */,
+				7DF431661AC2048D00A3B11D /* AudioToolbox.framework */,
+				7DF431621AC1F8DA00A3B11D /* CoreBluetooth.framework */,
+				7DF431631AC1F8DA00A3B11D /* CoreLocation.framework */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
