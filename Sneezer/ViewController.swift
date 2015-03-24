@@ -35,6 +35,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
 		{
 			self.beaconManager?.delegate = self
 		}
+        self.updateAdvertisedRegion()
 	}
 	
 	func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager!) {
