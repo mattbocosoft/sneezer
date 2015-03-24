@@ -7,9 +7,17 @@
 //
 
 import UIKit
+import CoreBluetooth
+import CoreLocation
 
 class ViewController: UIViewController {
 
+    var beaconManager: CBPeripheralManager?
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
