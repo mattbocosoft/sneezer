@@ -16,8 +16,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xW4-Gd-4Af">
-                                <rect key="frame" x="277" y="167" width="51" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQC-BA-GdL">
+                                <rect key="frame" x="273" y="252" width="44" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Bless">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xW4-Gd-4Af">
+                                <rect key="frame" x="273" y="165" width="60" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Sneeze">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -25,14 +33,16 @@
                                     <action selector="sneezeButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="LWI-JF-tOX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQC-BA-GdL">
-                                <rect key="frame" x="277" y="255" width="38" height="30"/>
-                                <state key="normal" title="Bless">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="xW4-Gd-4Af" secondAttribute="centerX" constant="-2.5" id="O4m-sE-36n"/>
+                            <constraint firstAttribute="centerY" secondItem="xW4-Gd-4Af" secondAttribute="centerY" constant="118" id="OCc-XP-Ueo"/>
+                            <constraint firstItem="vQC-BA-GdL" firstAttribute="leading" secondItem="xW4-Gd-4Af" secondAttribute="leading" id="nVb-EW-HWy"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vQC-BA-GdL" secondAttribute="bottom" constant="318" id="wfq-xY-M0M"/>
+                            <constraint firstAttribute="centerY" secondItem="xW4-Gd-4Af" secondAttribute="centerY" constant="118" id="zNI-eb-P1b"/>
+                            <constraint firstAttribute="centerY" secondItem="vQC-BA-GdL" secondAttribute="centerY" constant="33" id="zPc-W7-xzz"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
