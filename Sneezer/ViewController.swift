@@ -15,63 +15,103 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 
 	// Be the Beacon
 	var beaconManager: CBPeripheralManager?
-	var sneezingBeacons: [AnyObject]!
 
 	// Hear the Beacon
 	var locationManager: CLLocationManager?
+	var listenForSneezeRegion: CLBeaconRegion?
 
 	required init(coder aDecoder: NSCoder) {
 
 		super.init(coder: aDecoder)
     }
 
+	//MARK: View Lifecycle
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		// Listen for sneezing beacons
+		// Set-up sneeze emission
+		self.beaconManager = CBPeripheralManager(delegate: self, queue: nil)
+		self.beaconManager?.delegate = self
+
+		// Set-up sneezing detector
 		self.locationManager = CLLocationManager()
 		self.locationManager?.delegate = self
 
-		self.sneezingBeacons = [AnyObject]()
-		let region: CLBeaconRegion = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "5EC30DE0-4710-470F-A26C-A37FBCEFE1D4"), identifier: "com.SneezerApp")
+		if !CLLocationManager.isMonitoringAvailableForClass(CLBeaconRegion.self) {
+
+			UIAlertView(title: "Unavailable", message: "Beacon region monitoring is not available on this device.", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "OK").show()
+			return
+		}
+
+		if !CLLocationManager.isRangingAvailable() {
+			
+			UIAlertView(title: "Unavailable", message: "Beacon ranging is not available on this device.", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "OK").show()
+			return
+		}
+
+		self.listenForSneezeRegion = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "5EC30DE0-4710-470F-A26C-A37FBCEFE1D4"), identifier: "com.SneezerApp")
 	}
 
 	override func viewDidAppear(animated: Bool) {
 
 		super.viewDidAppear(animated)
 
-		// Broadcast sneezes
-		self.beaconManager = CBPeripheralManager(delegate: self, queue: nil)
-		self.beaconManager?.delegate = self
+		let authorizationStatus = CLLocationManager.authorizationStatus()
+		if authorizationStatus == CLAuthorizationStatus.AuthorizedAlways || authorizationStatus == CLAuthorizationStatus.AuthorizedWhenInUse {
+
+			self.startListeningForSneezes()
+
+		} else {
+
+			UIAlertView(title: "Unavailable", message: "Location monitoring has not authorized.", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "OK").show()
+			self.locationManager?.requestAlwaysAuthorization()
+		}
     }
+
+	//MARK: CBPeripheralManager Delegate Functions
 
 	func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager!) {
 		
 	}
 
-	func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
-        if(locationManager!.respondsToSelector("requestAlwaysAuthorization")) {
-            locationManager!.requestAlwaysAuthorization()
-        }
-		self.sneezingBeacons = beacons
+	//MARK: CLLocationManager Delegate Functions
 
-		for beacon: CLBeacon in self.sneezingBeacons as [CLBeacon]! {
+	func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [CLBeacon]!, inRegion region: CLBeaconRegion!) {
+
+		for beacon: CLBeacon in beacons {
 
 			println("Found beacon with proximity \(beacon.proximity)")
 		}
 
-		if self.sneezingBeacons.count > 0 {
-			// Play "Bless You"
-			self.playSoundEffect("BlessYou")
+		if beacons.count > 0 {
+
+			self.sneezeDetected()
 		}
 	}
 	
-    @IBAction func sneezeButtonTapped() {
-        self.updateAdvertisedRegion()
+	func locationManager(manager: CLLocationManager!, rangingBeaconsDidFailForRegion region: CLBeaconRegion!, withError error: NSError!) {
 
-		self.playSoundEffect("FactorySneeze")
-    }
+		UIAlertView(title: "Error", message: "Ranging beacons failed.", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "OK").show()
+		return
+	}
 	
+	func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+
+		if status == CLAuthorizationStatus.AuthorizedWhenInUse || status == CLAuthorizationStatus.AuthorizedAlways {
+			
+			self.startListeningForSneezes()
+		}
+	}
+
+	//MARK: User-Interaction
+    @IBAction func sneezeButtonTapped() {
+
+		// Start sneezing
+        self.startEmittingSneeze(1.0)
+    }
+
+	//MARK: Helper Functions
 	func playSoundEffect(filename: String) {
 
 		let path : NSString? = NSBundle.mainBundle().pathForResource(filename, ofType: "m4a")!
@@ -82,8 +122,11 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 		// Play
 		AudioServicesPlaySystemSound(mySound)
 	}
-	
-	func updateAdvertisedRegion() {
+
+	//MARK: Sneeze Emission
+	func startEmittingSneeze(duration: NSTimeInterval) {
+
+		self.playSoundEffect("FactorySneeze")
 
 		if self.beaconManager?.state != CBPeripheralManagerState.PoweredOn {
 			
@@ -107,7 +150,46 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 
 			self.beaconManager?.startAdvertising(peripheralData)
 		}
+
+		let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(duration * Double(NSEC_PER_SEC)))
+		dispatch_after(delayTime, dispatch_get_main_queue()) { self.stopEmittingSneeze() }
 	}
+	
+	func stopEmittingSneeze() {
+
+		self.beaconManager?.stopAdvertising()
+	}
+
+	//MARK: Sneeze Detection
+	func startListeningForSneezes() {
+
+		if let listenForSneezeRegion = self.listenForSneezeRegion {
+			self.locationManager?.startRangingBeaconsInRegion(listenForSneezeRegion)
+		}
+	}
+	
+	func sneezeDetected() {
+
+		struct Blessings {
+			static var blessYouTimeInvervalTheshold: NSTimeInterval = 5.0 // Minimum amount of time before saying "Bless You" again
+			static var hasRecentlyIssuedBlessing = false
+		}
+
+		if Blessings.hasRecentlyIssuedBlessing {
+
+			return
+		}
+
+		Blessings.hasRecentlyIssuedBlessing = true
+
+		let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(Blessings.blessYouTimeInvervalTheshold * Double(NSEC_PER_SEC)))
+		dispatch_after(delayTime, dispatch_get_main_queue()) { Blessings.hasRecentlyIssuedBlessing = false }
+
+		// Play "Bless You"
+		self.playSoundEffect("BlessYou")
+	}
+
+	//MARK: -
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
