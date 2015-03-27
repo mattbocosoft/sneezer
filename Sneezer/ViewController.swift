@@ -50,7 +50,9 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 	}
 
 	func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
-
+        if(locationManager!.respondsToSelector("requestAlwaysAuthorization")) {
+            locationManager!.requestAlwaysAuthorization()
+        }
 		self.sneezingBeacons = beacons
 
 		for beacon: CLBeacon in self.sneezingBeacons as [CLBeacon]! {
