@@ -13,7 +13,6 @@
 		7DF0A3A51AC1A3BD00AF1EFA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DF0A3A41AC1A3BD00AF1EFA /* Images.xcassets */; };
 		7DF0A3A81AC1A3BD00AF1EFA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DF0A3A61AC1A3BD00AF1EFA /* LaunchScreen.xib */; };
 		7DF0A3B41AC1A3BD00AF1EFA /* SneezerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF0A3B31AC1A3BD00AF1EFA /* SneezerTests.swift */; };
-		7DF431611AC1DB3100A3B11D /* SneezeHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF431601AC1DB3100A3B11D /* SneezeHost.swift */; };
 		7DF431641AC1F8DA00A3B11D /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF431621AC1F8DA00A3B11D /* CoreBluetooth.framework */; };
 		7DF431651AC1F8DA00A3B11D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF431631AC1F8DA00A3B11D /* CoreLocation.framework */; };
 		7DF431671AC2048D00A3B11D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF431661AC2048D00A3B11D /* AudioToolbox.framework */; };
@@ -42,7 +41,6 @@
 		7DF0A3AD1AC1A3BD00AF1EFA /* SneezerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SneezerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DF0A3B21AC1A3BD00AF1EFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DF0A3B31AC1A3BD00AF1EFA /* SneezerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SneezerTests.swift; sourceTree = "<group>"; };
-		7DF431601AC1DB3100A3B11D /* SneezeHost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SneezeHost.swift; sourceTree = "<group>"; };
 		7DF431621AC1F8DA00A3B11D /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		7DF431631AC1F8DA00A3B11D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7DF431661AC2048D00A3B11D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -95,7 +93,6 @@
 				7DF0A39D1AC1A3BD00AF1EFA /* AppDelegate.swift */,
 				7DF0A39F1AC1A3BD00AF1EFA /* ViewController.swift */,
 				7DF0A3A11AC1A3BD00AF1EFA /* Main.storyboard */,
-				7DF431601AC1DB3100A3B11D /* SneezeHost.swift */,
 				7DF0A3A41AC1A3BD00AF1EFA /* Images.xcassets */,
 				7DF0A3A61AC1A3BD00AF1EFA /* LaunchScreen.xib */,
 				7DF0A39B1AC1A3BD00AF1EFA /* Supporting Files */,
@@ -242,7 +239,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DF0A3A01AC1A3BD00AF1EFA /* ViewController.swift in Sources */,
-				7DF431611AC1DB3100A3B11D /* SneezeHost.swift in Sources */,
 				7DF0A39E1AC1A3BD00AF1EFA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
