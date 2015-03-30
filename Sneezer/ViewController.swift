@@ -144,6 +144,8 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 	
 		let region = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "5EC30DE0-4710-470F-A26C-A37FBCEFE1D4"), major: 1, minor: 1, identifier: "com.SneezerApp")
 		peripheralData = region.peripheralDataWithMeasuredPower(-59)
+
+        sleep(4);
 	
 		// The region's peripheral data contains the CoreBluetooth-specific data we need to advertise.
 		if peripheralData != nil {
