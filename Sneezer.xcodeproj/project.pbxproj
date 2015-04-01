@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7D3441F71AC9A04100C358DD /* SneezeButtonImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3441F61AC9A04100C358DD /* SneezeButtonImg.png */; };
 		7D3441F91ACB1C7E00C358DD /* FactorySneeze.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7D3441F81ACB1C7D00C358DD /* FactorySneeze.m4a */; };
+		7DECF2AE1ACC62F20082788A /* BlessYou.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DECF2AD1ACC62F20082788A /* BlessYou.m4a */; };
 		7DF0A39E1AC1A3BD00AF1EFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF0A39D1AC1A3BD00AF1EFA /* AppDelegate.swift */; };
 		7DF0A3A01AC1A3BD00AF1EFA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF0A39F1AC1A3BD00AF1EFA /* ViewController.swift */; };
 		7DF0A3A31AC1A3BD00AF1EFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DF0A3A11AC1A3BD00AF1EFA /* Main.storyboard */; };
@@ -18,8 +19,6 @@
 		7DF431641AC1F8DA00A3B11D /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF431621AC1F8DA00A3B11D /* CoreBluetooth.framework */; };
 		7DF431651AC1F8DA00A3B11D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF431631AC1F8DA00A3B11D /* CoreLocation.framework */; };
 		7DF431671AC2048D00A3B11D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF431661AC2048D00A3B11D /* AudioToolbox.framework */; };
-		7DF431691AC205AD00A3B11D /* FactorySneeze1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DF431681AC205AD00A3B11D /* FactorySneeze1.m4a */; };
-		7DF4316B1AC20BA500A3B11D /* BlessYou.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DF4316A1AC20BA500A3B11D /* BlessYou.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +34,7 @@
 /* Begin PBXFileReference section */
 		7D3441F61AC9A04100C358DD /* SneezeButtonImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SneezeButtonImg.png; path = Graphics/SneezeButtonImg.png; sourceTree = "<group>"; };
 		7D3441F81ACB1C7D00C358DD /* FactorySneeze.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = FactorySneeze.m4a; sourceTree = "<group>"; };
+		7DECF2AD1ACC62F20082788A /* BlessYou.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = BlessYou.m4a; sourceTree = "<group>"; };
 		7DF0A3981AC1A3BD00AF1EFA /* Sneezer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sneezer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DF0A39C1AC1A3BD00AF1EFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DF0A39D1AC1A3BD00AF1EFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -48,8 +48,6 @@
 		7DF431621AC1F8DA00A3B11D /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		7DF431631AC1F8DA00A3B11D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7DF431661AC2048D00A3B11D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		7DF431681AC205AD00A3B11D /* FactorySneeze1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = FactorySneeze1.m4a; sourceTree = "<group>"; };
-		7DF4316A1AC20BA500A3B11D /* BlessYou.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = BlessYou.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				7D3441F61AC9A04100C358DD /* SneezeButtonImg.png */,
-				7DF4316A1AC20BA500A3B11D /* BlessYou.m4a */,
-				7DF431681AC205AD00A3B11D /* FactorySneeze1.m4a */,
+				7DECF2AD1ACC62F20082788A /* BlessYou.m4a */,
 				7D3441F81ACB1C7D00C358DD /* FactorySneeze.m4a */,
 			);
 			name = Resources;
@@ -230,13 +227,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DF4316B1AC20BA500A3B11D /* BlessYou.m4a in Resources */,
 				7D3441F91ACB1C7E00C358DD /* FactorySneeze.m4a in Resources */,
+				7DECF2AE1ACC62F20082788A /* BlessYou.m4a in Resources */,
 				7DF0A3A31AC1A3BD00AF1EFA /* Main.storyboard in Resources */,
 				7DF0A3A81AC1A3BD00AF1EFA /* LaunchScreen.xib in Resources */,
 				7D3441F71AC9A04100C358DD /* SneezeButtonImg.png in Resources */,
 				7DF0A3A51AC1A3BD00AF1EFA /* Images.xcassets in Resources */,
-				7DF431691AC205AD00A3B11D /* FactorySneeze1.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
