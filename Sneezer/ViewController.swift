@@ -85,11 +85,13 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 		}
 
 		if beacons.count > 0 {
+            
             if beacons.first?.proximity != CLProximity.Unknown {
-                self.sneezeDetected()
+                self.sneezeDetected(beacons.first!.proximity)
             }
 
-		}
+
+        }
 	}
 	
 	func locationManager(manager: CLLocationManager!, rangingBeaconsDidFailForRegion region: CLBeaconRegion!, withError error: NSError!) {
@@ -172,7 +174,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 		}
 	}
 	
-	func sneezeDetected() {
+	func sneezeDetected(proximity: CLProximity) {
 
 		struct Blessings {
 			static var blessYouTimeInvervalTheshold: NSTimeInterval = 3.0 // Minimum amount of time before saying "Bless You" again
@@ -191,7 +193,29 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 
 		// Play "Bless You"
 		self.playSoundEffect("BlessYou")
-	}
+
+        let probability = CGFloat(arc4random_uniform(100) + 1) / 100.0
+        
+        
+        if proximity == CLProximity.Far {
+            println(" You're far away from the sneezer")
+            if probability <= 0.10 {
+                println(probability, "You caught the cold!")
+            }
+        } else if proximity == CLProximity.Near {
+            println(" You're near the sneezer")
+            if probability <= 0.50 {
+                println(probability, "You caught the cold!")
+            }
+        } else if proximity == CLProximity.Immediate {
+            println(" You're right next to the sneezer")
+            if probability <= 0.75 {
+                println(probability, "You caught the cold!")
+            }
+        } else {
+            println( "Proximity Unknown")
+        }
+    }
 
 	//MARK: -
 
