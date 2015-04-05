@@ -9,20 +9,6 @@
 import UIKit
 import SpriteKit
 
-protocol NodeConstructor {
-	var name: String { get }
-	var imageName: String { get }
-}
-
-class Pathogen: NodeConstructor {
-	var name: String { get { return "Pathogen" } }
-	var imageName: String { get {
-		let _imageName = "Pathogen\(arc4random_uniform(3) + 1).png"
-		return _imageName
-		}
-	}
-}
-
 class MainScene: SKScene, SKPhysicsContactDelegate {
 
 	private var bouncingNodes: [SKSpriteNode]?
@@ -51,40 +37,56 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
 		self.bouncingNodes = [SKSpriteNode]()
 
 		for i in 0...5 {
-			self.generateBouncingNode(Pathogen())
+			self.addBouncingNode(self.generatePathogenNode())
 		}
 
 		self.physicsWorld.contactDelegate = self
 	}
 
-	func generateBouncingNode(category: NodeConstructor) {
+	func generateAngelNode() -> SKSpriteNode {
 
-		// 1
-		let node = SKSpriteNode(imageNamed: category.imageName)
-		node.size = CGSizeMake(100, 100)
-		node.name = category.name
+		let name = "Angel"
+
+		let node = SKSpriteNode(imageNamed: "\(name)\(arc4random_uniform(2) + 1).png")
+		node.size = CGSizeMake(150, 150)
+		node.name = name
 		node.position = CGPointMake(self.frame.size.width/3, self.frame.size.height/3);
-		self.addChild(node)
+
+//		node.physicsBody?.categoryBitMask = category.name
+
+		return node
+	}
+
+	func generatePathogenNode() -> SKSpriteNode {
 		
-		// 2
+		let name = "Pathogen"
+		
+		let node = SKSpriteNode(imageNamed: "\(name)\(arc4random_uniform(3) + 1).png")
+		node.size = CGSizeMake(100, 100)
+		node.name = name
+		node.position = CGPointMake(self.frame.size.width/3, self.frame.size.height/3);
+		
+//		node.physicsBody?.categoryBitMask = category.name
+		
+		return node
+	}
+
+	func addBouncingNode(node: SKSpriteNode) {
+
+		self.addChild(node)
+	
 		node.physicsBody = SKPhysicsBody(circleOfRadius: node.frame.size.width/3)
-		// 3
 		node.physicsBody?.friction = 0.0
-		// 4
 		node.physicsBody?.restitution = 1.0
-		// 5
 		node.physicsBody?.linearDamping = 0.0
-		// 6
 		node.physicsBody?.allowsRotation = true
 
-		let maximumImpulse = UInt32(20)
-		let xImpulse = CGFloat(arc4random_uniform(maximumImpulse))
-		let yImpulse = CGFloat(arc4random_uniform(maximumImpulse))
+		let maximumImpulse = UInt32(40)
+		let xImpulse = CGFloat(arc4random_uniform(maximumImpulse)) - CGFloat(maximumImpulse)/2.0
+		let yImpulse = CGFloat(arc4random_uniform(maximumImpulse)) - CGFloat(maximumImpulse)/2.0
 		node.physicsBody?.applyImpulse(CGVectorMake(xImpulse, yImpulse))
 		let angularImpulse = CGFloat(arc4random_uniform(5))/500.0
 		node.physicsBody?.applyAngularImpulse(CGFloat(angularImpulse))
-
-//		node.physicsBody?.categoryBitMask = category.name
 
 		self.bouncingNodes?.append(node)
 	}
