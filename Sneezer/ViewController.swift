@@ -101,8 +101,8 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 
 		if skView.scene == nil {
 
-			skView.showsFPS = true
-			skView.showsNodeCount = true
+			skView.showsFPS = false
+			skView.showsNodeCount = false
 			
 			// Create and configure the scene.
 			let scene = MainScene(size: skView.bounds.size)
