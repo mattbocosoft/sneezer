@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		7BD49C141ACF283300700A0E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BD49C131ACF283300700A0E /* AVFoundation.framework */; };
+		7BD49C161ACF349400700A0E /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD49C151ACF349400700A0E /* MainScene.swift */; };
+		7BD49C181ACF354400700A0E /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BD49C171ACF354400700A0E /* SpriteKit.framework */; };
+		7BD49C281AD028F500700A0E /* Pathogen3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BD49C211AD028F500700A0E /* Pathogen3@2x.png */; };
+		7BD49C291AD028F500700A0E /* Pathogen1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BD49C221AD028F500700A0E /* Pathogen1@2x.png */; };
+		7BD49C2A1AD028F500700A0E /* Pathogen2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BD49C231AD028F500700A0E /* Pathogen2@2x.png */; };
+		7BD49C2B1AD028F500700A0E /* Angel1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BD49C241AD028F500700A0E /* Angel1@2x.png */; };
+		7BD49C2C1AD028F500700A0E /* Angel2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BD49C251AD028F500700A0E /* Angel2@2x.png */; };
+		7BD49C2D1AD028F500700A0E /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BD49C261AD028F500700A0E /* Background.png */; };
+		7BD49C2E1AD028F500700A0E /* Background2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BD49C271AD028F500700A0E /* Background2.png */; };
 		7D3441F71AC9A04100C358DD /* SneezeButtonImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3441F61AC9A04100C358DD /* SneezeButtonImg.png */; };
 		7D3441F91ACB1C7E00C358DD /* FactorySneeze.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7D3441F81ACB1C7D00C358DD /* FactorySneeze.m4a */; };
 		7DECF2AE1ACC62F20082788A /* BlessYou.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DECF2AD1ACC62F20082788A /* BlessYou.m4a */; };
@@ -34,6 +43,15 @@
 
 /* Begin PBXFileReference section */
 		7BD49C131ACF283300700A0E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		7BD49C151ACF349400700A0E /* MainScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScene.swift; sourceTree = "<group>"; };
+		7BD49C171ACF354400700A0E /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		7BD49C211AD028F500700A0E /* Pathogen3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pathogen3@2x.png"; path = "Resources/Pathogen3@2x.png"; sourceTree = "<group>"; };
+		7BD49C221AD028F500700A0E /* Pathogen1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pathogen1@2x.png"; path = "Resources/Pathogen1@2x.png"; sourceTree = "<group>"; };
+		7BD49C231AD028F500700A0E /* Pathogen2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pathogen2@2x.png"; path = "Resources/Pathogen2@2x.png"; sourceTree = "<group>"; };
+		7BD49C241AD028F500700A0E /* Angel1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Angel1@2x.png"; path = "Resources/Angel1@2x.png"; sourceTree = "<group>"; };
+		7BD49C251AD028F500700A0E /* Angel2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Angel2@2x.png"; path = "Resources/Angel2@2x.png"; sourceTree = "<group>"; };
+		7BD49C261AD028F500700A0E /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background.png; path = Resources/Background.png; sourceTree = "<group>"; };
+		7BD49C271AD028F500700A0E /* Background2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background2.png; path = Resources/Background2.png; sourceTree = "<group>"; };
 		7D3441F61AC9A04100C358DD /* SneezeButtonImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SneezeButtonImg.png; path = Graphics/SneezeButtonImg.png; sourceTree = "<group>"; };
 		7D3441F81ACB1C7D00C358DD /* FactorySneeze.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = FactorySneeze.m4a; sourceTree = "<group>"; };
 		7DECF2AD1ACC62F20082788A /* BlessYou.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = BlessYou.m4a; sourceTree = "<group>"; };
@@ -57,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BD49C181ACF354400700A0E /* SpriteKit.framework in Frameworks */,
 				7BD49C141ACF283300700A0E /* AVFoundation.framework in Frameworks */,
 				7DF431671AC2048D00A3B11D /* AudioToolbox.framework in Frameworks */,
 				7DF431641AC1F8DA00A3B11D /* CoreBluetooth.framework in Frameworks */,
@@ -80,6 +99,13 @@
 				7D3441F61AC9A04100C358DD /* SneezeButtonImg.png */,
 				7DECF2AD1ACC62F20082788A /* BlessYou.m4a */,
 				7D3441F81ACB1C7D00C358DD /* FactorySneeze.m4a */,
+				7BD49C221AD028F500700A0E /* Pathogen1@2x.png */,
+				7BD49C231AD028F500700A0E /* Pathogen2@2x.png */,
+				7BD49C211AD028F500700A0E /* Pathogen3@2x.png */,
+				7BD49C241AD028F500700A0E /* Angel1@2x.png */,
+				7BD49C251AD028F500700A0E /* Angel2@2x.png */,
+				7BD49C261AD028F500700A0E /* Background.png */,
+				7BD49C271AD028F500700A0E /* Background2.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -87,7 +113,6 @@
 		7DF0A38F1AC1A3BD00AF1EFA = {
 			isa = PBXGroup;
 			children = (
-				7BD49C131ACF283300700A0E /* AVFoundation.framework */,
 				7DF0A39A1AC1A3BD00AF1EFA /* Sneezer */,
 				7DF0A3B01AC1A3BD00AF1EFA /* SneezerTests */,
 				7DF0A3991AC1A3BD00AF1EFA /* Products */,
@@ -108,6 +133,7 @@
 			children = (
 				7DF0A39D1AC1A3BD00AF1EFA /* AppDelegate.swift */,
 				7DF0A39F1AC1A3BD00AF1EFA /* ViewController.swift */,
+				7BD49C151ACF349400700A0E /* MainScene.swift */,
 				7DF0A3A11AC1A3BD00AF1EFA /* Main.storyboard */,
 				7DF0A3A41AC1A3BD00AF1EFA /* Images.xcassets */,
 				7DF0A3A61AC1A3BD00AF1EFA /* LaunchScreen.xib */,
@@ -121,6 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				7DF0A39C1AC1A3BD00AF1EFA /* Info.plist */,
+				7BD49C171ACF354400700A0E /* SpriteKit.framework */,
+				7BD49C131ACF283300700A0E /* AVFoundation.framework */,
 				7DF431661AC2048D00A3B11D /* AudioToolbox.framework */,
 				7DF431621AC1F8DA00A3B11D /* CoreBluetooth.framework */,
 				7DF431631AC1F8DA00A3B11D /* CoreLocation.framework */,
@@ -231,12 +259,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BD49C281AD028F500700A0E /* Pathogen3@2x.png in Resources */,
 				7D3441F91ACB1C7E00C358DD /* FactorySneeze.m4a in Resources */,
 				7DECF2AE1ACC62F20082788A /* BlessYou.m4a in Resources */,
 				7DF0A3A31AC1A3BD00AF1EFA /* Main.storyboard in Resources */,
+				7BD49C2A1AD028F500700A0E /* Pathogen2@2x.png in Resources */,
+				7BD49C2B1AD028F500700A0E /* Angel1@2x.png in Resources */,
 				7DF0A3A81AC1A3BD00AF1EFA /* LaunchScreen.xib in Resources */,
+				7BD49C2D1AD028F500700A0E /* Background.png in Resources */,
 				7D3441F71AC9A04100C358DD /* SneezeButtonImg.png in Resources */,
 				7DF0A3A51AC1A3BD00AF1EFA /* Images.xcassets in Resources */,
+				7BD49C2C1AD028F500700A0E /* Angel2@2x.png in Resources */,
+				7BD49C291AD028F500700A0E /* Pathogen1@2x.png in Resources */,
+				7BD49C2E1AD028F500700A0E /* Background2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +291,7 @@
 			files = (
 				7DF0A3A01AC1A3BD00AF1EFA /* ViewController.swift in Sources */,
 				7DF0A39E1AC1A3BD00AF1EFA /* AppDelegate.swift in Sources */,
+				7BD49C161ACF349400700A0E /* MainScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
