@@ -11,6 +11,7 @@ import CoreBluetooth
 import CoreLocation
 import AudioToolbox
 import AVFoundation
+import SpriteKit
 
 enum SoundEffectType {
 	
@@ -92,6 +93,25 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 			self.locationManager?.requestAlwaysAuthorization()
 		}
     }
+
+	override func viewWillLayoutSubviews() {
+		super.viewWillLayoutSubviews()
+
+		let skView = self.view as SKView
+
+		if skView.scene == nil {
+
+			skView.showsFPS = false
+			skView.showsNodeCount = false
+			
+			// Create and configure the scene.
+			let scene = MainScene(size: skView.bounds.size)
+			scene.scaleMode = SKSceneScaleMode.AspectFill
+
+			// Present the scene.
+			skView.presentScene(scene)
+		}
+	}
 
 	//MARK: CBPeripheralManager Delegate Functions
 
