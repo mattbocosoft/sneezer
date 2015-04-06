@@ -10,8 +10,28 @@ import UIKit
 import CoreBluetooth
 import CoreLocation
 import AudioToolbox
+import AVFoundation
 
-class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationManagerDelegate {
+enum SoundEffectType {
+	
+	case Sneeze
+	case BlessYou
+	
+	var description : String {
+		switch self {
+		case .Sneeze: return "FactorySneeze"
+		case .BlessYou: return "BlessYou"
+		}
+	}
+}
+
+struct Blessings {
+	static var blessYouTimeInvervalTheshold: NSTimeInterval = 3.0 // Minimum amount of time before saying "Bless You" again
+	static var hasRecentlyIssuedBlessing = false
+	static var enabled = true
+}
+
+class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationManagerDelegate, AVAudioPlayerDelegate {
 
 	// Be the Beacon
 	var beaconManager: CBPeripheralManager?
@@ -20,10 +40,14 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 	var locationManager: CLLocationManager?
 	var listenForSneezeRegion: CLBeaconRegion?
 
+	var audioPlayer: AVAudioPlayer?
+
 	required init(coder aDecoder: NSCoder) {
 
 		super.init(coder: aDecoder)
     }
+
+	@IBOutlet var requestSneezeButton: UIButton!
 
 	//MARK: View Lifecycle
 
@@ -111,26 +135,11 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 	//MARK: User-Interaction
     @IBAction func sneezeButtonTapped() {
 
-		// Start sneezing
-        self.startEmittingSneeze(1.0)
+		self.playSoundEffect(SoundEffectType.Sneeze)
     }
 
-	//MARK: Helper Functions
-	func playSoundEffect(filename: String) {
-
-		let path : NSString? = NSBundle.mainBundle().pathForResource(filename, ofType: "m4a")!
-		let url = NSURL(fileURLWithPath: path!)
-		
-		var mySound: SystemSoundID = 0
-		AudioServicesCreateSystemSoundID(url, &mySound)
-		// Play
-		AudioServicesPlaySystemSound(mySound)
-	}
-
 	//MARK: Sneeze Emission
-	func startEmittingSneeze(duration: NSTimeInterval) {
-
-		self.playSoundEffect("FactorySneeze")
+	func emitSneezingBeacon(duration: NSTimeInterval) {
 
 		if self.beaconManager?.state != CBPeripheralManagerState.PoweredOn {
 			
@@ -145,25 +154,27 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 		
 		// We must construct a CLBeaconRegion that represents the payload we want the device to beacon.
 		var peripheralData: NSDictionary?
-	
+		
 		let region = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "5EC30DE0-4710-470F-A26C-A37FBCEFE1D4"), major: 1, minor: 1, identifier: "com.SneezerApp")
 		peripheralData = region.peripheralDataWithMeasuredPower(-59)
 
-        sleep(2);
-	
 		// The region's peripheral data contains the CoreBluetooth-specific data we need to advertise.
 		if peripheralData != nil {
-
+			
 			self.beaconManager?.startAdvertising(peripheralData)
 		}
 
-		let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(duration * Double(NSEC_PER_SEC)))
-		dispatch_after(delayTime, dispatch_get_main_queue()) { self.stopEmittingSneeze() }
+		// If duration is 0, then emit sneezing beacon indefinitely
+		if duration > 0.0 {
+			let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(duration * Double(NSEC_PER_SEC)))
+			dispatch_after(delayTime, dispatch_get_main_queue()) { self.stopSneezingBeacon() }
+		}
 	}
-	
-	func stopEmittingSneeze() {
+
+	func stopSneezingBeacon() {
 
 		self.beaconManager?.stopAdvertising()
+		self.requestSneezeButton.enabled = true
 	}
 
 	//MARK: Sneeze Detection
@@ -176,9 +187,8 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 	
 	func sneezeDetected(proximity: CLProximity) {
 
-		struct Blessings {
-			static var blessYouTimeInvervalTheshold: NSTimeInterval = 3.0 // Minimum amount of time before saying "Bless You" again
-			static var hasRecentlyIssuedBlessing = false
+		if !Blessings.enabled {
+			return
 		}
 
 		if Blessings.hasRecentlyIssuedBlessing {
@@ -192,6 +202,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 		dispatch_after(delayTime, dispatch_get_main_queue()) { Blessings.hasRecentlyIssuedBlessing = false }
 
 		// Play "Bless You"
+<<<<<<< HEAD
 		self.playSoundEffect("BlessYou")
 
         let probability = CGFloat(arc4random_uniform(100) + 1) / 100.0
@@ -216,6 +227,45 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
             println( "Proximity Unknown")
         }
     }
+=======
+		self.playSoundEffect(SoundEffectType.BlessYou)
+	}
+
+	//MARK: Helper Functions
+	func playSoundEffect(type: SoundEffectType) {
+
+		let path: NSString? = NSBundle.mainBundle().pathForResource(type.description, ofType: "m4a")!
+		let url = NSURL(fileURLWithPath: path!)
+
+		var error:NSError?
+		self.audioPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
+		if error != nil {
+			println("Error creating sound effect \(error?.localizedDescription)")
+			return
+		}
+		self.audioPlayer?.delegate = self
+		self.audioPlayer?.play()
+
+		Blessings.enabled = false
+
+		if self.audioPlayer?.url.lastPathComponent?.stringByDeletingPathExtension == SoundEffectType.Sneeze.description {
+
+			self.requestSneezeButton.enabled = false
+			
+		}
+	}
+	
+	func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
+
+		Blessings.enabled = true
+
+		if player.url.lastPathComponent?.stringByDeletingPathExtension == SoundEffectType.Sneeze.description {
+
+			self.emitSneezingBeacon(1.0)
+
+		}
+	}
+>>>>>>> fc64e32c3c1275eeae42cc02a6282b56d3293b37
 
 	//MARK: -
 
