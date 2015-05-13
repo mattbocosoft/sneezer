@@ -7,14 +7,39 @@
 //
 
 import UIKit
+import SpriteKit
 
 class InfectedViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func loadView() {
 
-        // Do any additional setup after loading the view.
+		self.view = SKView()
+	}
+
+    override func viewDidLoad() {
+
+		super.viewDidLoad()
     }
+
+	override func viewWillLayoutSubviews() {
+
+		super.viewWillLayoutSubviews()
+		
+		let skView = self.view as! SKView
+		
+		if skView.scene == nil {
+			
+			skView.showsFPS = false
+			skView.showsNodeCount = false
+			
+			// Create and configure the scene.
+			let scene = PathogenScene(size: skView.bounds.size)
+			scene.scaleMode = SKSceneScaleMode.AspectFill
+			
+			// Present the scene.
+			skView.presentScene(scene)
+		}
+	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

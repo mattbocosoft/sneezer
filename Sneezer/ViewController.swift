@@ -97,20 +97,20 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 	override func viewWillLayoutSubviews() {
 		super.viewWillLayoutSubviews()
 
-		let skView = self.view as! SKView
-
-		if skView.scene == nil {
-
-			skView.showsFPS = false
-			skView.showsNodeCount = false
-			
-			// Create and configure the scene.
-			let scene = BouncingScene(size: skView.bounds.size)
-			scene.scaleMode = SKSceneScaleMode.AspectFill
-
-			// Present the scene.
-			skView.presentScene(scene)
-		}
+//		let skView = self.view as! SKView
+//
+//		if skView.scene == nil {
+//
+//			skView.showsFPS = false
+//			skView.showsNodeCount = false
+//			
+//			// Create and configure the scene.
+//			let scene = BouncingScene(size: skView.bounds.size)
+//			scene.scaleMode = SKSceneScaleMode.AspectFill
+//
+//			// Present the scene.
+//			skView.presentScene(scene)
+//		}
 	}
 
 	//MARK: CBPeripheralManager Delegate Functions
@@ -154,6 +154,9 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 	//MARK: User-Interaction
     @IBAction func sneezeButtonTapped() {
 
+		let viewController = InfectedViewController()
+		viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+		self.presentViewController(viewController, animated: true, completion: nil)
 		self.playSoundEffect(SoundEffectType.Sneeze)
     }
 
