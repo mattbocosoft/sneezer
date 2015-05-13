@@ -20,17 +20,19 @@ class SneezeDetector: NSObject, CLLocationManagerDelegate {
 
 	var delegate: SneezeDetectorDelegate?
 
-	var locationManager: CLLocationManager?
-	var listenForSneezeRegion: CLBeaconRegion?
+	private var locationManager: CLLocationManager?
+	private var listenForSneezeRegion: CLBeaconRegion?
 
-	override init() {
+	init(delegate: SneezeDetectorDelegate?) {
 
 		super.init()
+
+		self.delegate = delegate
 
 		// Set-up sneezing detector
 		self.locationManager = CLLocationManager()
 		self.locationManager?.delegate = self
-		
+
 		if !CLLocationManager.isMonitoringAvailableForClass(CLBeaconRegion.self) {
 			
 			UIAlertView(title: "Unavailable", message: "Beacon region monitoring is not available on this device.", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "OK").show()
@@ -67,7 +69,7 @@ class SneezeDetector: NSObject, CLLocationManagerDelegate {
 		}
 	}
 	
-	func sneezeDetected(proximity: CLProximity) {
+	private func sneezeDetected(proximity: CLProximity) {
 		
 		if !Blessings.enabled {
 			return

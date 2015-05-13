@@ -7,32 +7,8 @@
 //
 
 import UIKit
-import AudioToolbox
-import AVFoundation
-import SpriteKit
 
-enum SoundEffectType {
-	
-	case Sneeze
-	case BlessYou
-	
-	var description : String {
-		switch self {
-		case .Sneeze: return "FactorySneeze"
-		case .BlessYou: return "BlessYou"
-		}
-	}
-}
-
-struct Blessings {
-	static var blessYouTimeInvervalTheshold: NSTimeInterval = 3.0 // Minimum amount of time before saying "Bless You" again
-	static var hasRecentlyIssuedBlessing = false
-	static var enabled = true
-}
-
-class ViewController: UIViewController, AVAudioPlayerDelegate, InfectedViewControllerDelegate, SneezeEmitterDelegate, SneezeDetectorDelegate {
-
-	var audioPlayer: AVAudioPlayer?
+class ViewController: UIViewController, InfectedViewControllerDelegate, SneezeEmitterDelegate, SneezeDetectorDelegate {
 
 	var sneezeEmitter: SneezeEmitter?
 	var sneezeDetector: SneezeDetector?
@@ -47,77 +23,37 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, InfectedViewContr
 	//MARK: View Lifecycle
 
 	override func viewDidLoad() {
+
 		super.viewDidLoad()
+
+		// Be the Beacon
+		self.sneezeEmitter = SneezeEmitter(delegate: self)
+		
+		// Hear the Beacon
+		self.sneezeDetector = SneezeDetector(delegate: self)
 	}
 
 	override func viewDidAppear(animated: Bool) {
 
 		super.viewDidAppear(animated)
-
-		// Be the Beacon
-		self.sneezeEmitter = SneezeEmitter()
-		self.sneezeEmitter?.delegate = self
-
-		// Hear the Beacon
-		self.sneezeDetector = SneezeDetector()
-		self.sneezeDetector?.delegate = self
     }
-
-	override func viewWillLayoutSubviews() {
-
-		super.viewWillLayoutSubviews()
-	}
 
 	//MARK: User-Interaction
     @IBAction func sneezeButtonTapped() {
 
-		self.playSoundEffect(SoundEffectType.Sneeze)
+		self.requestSneezeButton.enabled = false
+
+		self.sneezeEmitter?.sneezeContinuously()
     }
 
 	@IBAction func infoButtonTapped() {
 		
 	}
 
-	//MARK: Helper Functions
-
-	func playSoundEffect(type: SoundEffectType) {
-
-		let path: NSString? = NSBundle.mainBundle().pathForResource(type.description, ofType: "m4a")!
-		let url = NSURL(fileURLWithPath: path! as String)
-
-		var error:NSError?
-		self.audioPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
-		if error != nil {
-			println("Error creating sound effect \(error?.localizedDescription)")
-			return
-		}
-		self.audioPlayer?.delegate = self
-		self.audioPlayer?.play()
-
-		Blessings.enabled = false
-
-		if self.audioPlayer?.url.lastPathComponent?.stringByDeletingPathExtension == SoundEffectType.Sneeze.description {
-
-			self.requestSneezeButton.enabled = false
-		}
-	}
-
-	//MARK: AVAudioPlayer Delegate
-
-	func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
-
-		Blessings.enabled = true
-
-		if player.url.lastPathComponent?.stringByDeletingPathExtension == SoundEffectType.Sneeze.description {
-
-			self.sneezeEmitter?.emitSneezingBeacon(1.0)
-		}
-	}
-
 	//MARK: Sneeze Emitter Delegate
 	
 	func sneezeEmitterStartedSneezing() {
-		
+
 		self.showInfectedView()
 	}
 	
@@ -128,11 +64,13 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, InfectedViewContr
 		UIAlertView(title: title, message: errorMessage, delegate: nil, cancelButtonTitle: nil, otherButtonTitles: cancelButtonTitle).show()
 
 		self.requestSneezeButton.enabled = true
+		self.dismissViewControllerAnimated(true, completion: nil)
 	}
 	
 	func sneezeEmitterStoppedSneezing() {
-		
+
 		self.requestSneezeButton.enabled = true
+		self.dismissViewControllerAnimated(true, completion: nil)
 	}
 	
 	//MARK: Sneeze Detector Delegate
@@ -142,8 +80,8 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, InfectedViewContr
 	}
 	
 	func sneezeDetectorHeardSneeze() {
-		
-		self.playSoundEffect(SoundEffectType.BlessYou)
+
+		SoundEffectManager.sharedInstance.playSoundEffect(SoundEffectType.BlessYou)
 		
 		//TODO: Show infected/healthy view depending on whether the user has been infected
 		self.showHealthyView()

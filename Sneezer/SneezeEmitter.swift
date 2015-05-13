@@ -20,27 +20,73 @@ protocol SneezeEmitterDelegate {
 class SneezeEmitter: NSObject, CBPeripheralManagerDelegate {
 
 	var delegate: SneezeEmitterDelegate?
-	private var beaconManager: CBPeripheralManager?
 
-	override init() {
+	private var beaconManager: CBPeripheralManager?
+	private var continuousSneezing: Bool = false
+
+	init(delegate: SneezeEmitterDelegate?) {
 
 		super.init()
 
+		self.delegate = delegate
+
 		// Set-up sneeze emission
 		self.beaconManager = CBPeripheralManager(delegate: self, queue: nil)
+
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "sneezeSoundEffectFinished", name: SoundEffectNotifications.SneezeDidFinish, object: nil)
 	}
 
 	//MARK: Sneeze Emission
-	func emitSneezingBeacon(duration: NSTimeInterval) {
-		
+
+	func sneezeOnce() {
+
 		if self.beaconManager?.state != CBPeripheralManagerState.PoweredOn {
 			
 			self.delegate?.sneezeEmitterSneezingFailed("Bluetooth must be enabled to sneeze")
 			return
+			
 		}
+
+		if self.continuousSneezing == false {
+
+			self.delegate?.sneezeEmitterStartedSneezing()
+		}
+
+		SoundEffectManager.sharedInstance.playSoundEffect(SoundEffectType.Sneeze)
+	}
+
+	func sneezeContinuously() {
+
+		if self.beaconManager?.state != CBPeripheralManagerState.PoweredOn {
+			
+			self.delegate?.sneezeEmitterSneezingFailed("Bluetooth must be enabled to sneeze")
+			return
+			
+		}
+
+		self.delegate?.sneezeEmitterStartedSneezing()
+		self.continuousSneezing = true
+		self.sneezeOnce()
+	}
+	
+	func stopContinuouslySneezing() {
+
+		self.continuousSneezing = false
+	}
+
+	//MARK: Sound Effect Notification
+
+	func sneezeSoundEffectFinished() {
+
+		self.emitBeacon(duration: 1.0)
+	}
+
+	//MARK: -
+
+	private func emitBeacon(#duration: NSTimeInterval) {
 		
 		self.beaconManager?.stopAdvertising()
-		
+
 		// We must construct a CLBeaconRegion that represents the payload we want the device to beacon.
 		var peripheralData: [NSObject : AnyObject]!
 		
@@ -53,36 +99,48 @@ class SneezeEmitter: NSObject, CBPeripheralManagerDelegate {
 			self.beaconManager?.startAdvertising(peripheralData)
 		}
 
-		if let beaconManager = self.beaconManager {
-			
-			if beaconManager.isAdvertising {
-				
-				self.delegate?.sneezeEmitterStartedSneezing()
-			} else {
-				
-				self.delegate?.sneezeEmitterSneezingFailed("Could not start sneezing")
-			}
-		} else {
+		if self.beaconManager == nil {
+
 			self.delegate?.sneezeEmitterSneezingFailed("Could not initialize beacons")
 		}
 
 		// If duration is 0, then emit sneezing beacon indefinitely
 		if duration > 0.0 {
 			let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(duration * Double(NSEC_PER_SEC)))
-			dispatch_after(delayTime, dispatch_get_main_queue()) { self.stopSneezingBeacon() }
+			dispatch_after(delayTime, dispatch_get_main_queue()) {
+
+				self.stopBeacon()
+			}
 		}
 	}
 	
-	func stopSneezingBeacon() {
+	private func stopBeacon() {
 		
 		self.beaconManager?.stopAdvertising()
 
-		self.delegate?.sneezeEmitterStoppedSneezing()
+		if self.continuousSneezing {
+			
+			let randomSneezeInterval: NSTimeInterval = 10
+			let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(randomSneezeInterval * Double(NSEC_PER_SEC)))
+			dispatch_after(delayTime, dispatch_get_main_queue()) {
+				
+				self.sneezeOnce()
+			}
+		} else {
+
+			self.delegate?.sneezeEmitterStoppedSneezing()
+		}
 	}
 
 	//MARK: CBPeripheralManager Delegate Functions
 	
 	func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager!) {
 		
+	}
+
+	//MARK: -
+	deinit {
+
+		NSNotificationCenter.defaultCenter().removeObserver(self)
 	}
 }
