@@ -16,9 +16,7 @@ class PathogenNode: SKSpriteNode {
 		let name = "Pathogen"
 		
 		let texture = SKTexture(imageNamed: "\(name)\(arc4random_uniform(3) + 1).png")
-		super.init(texture: texture, color: nil, size: texture.size())
-		
-		self.size = CGSizeMake(100, 100)
+		super.init(texture: texture, color: nil, size: CGSizeMake(100, 100))
 		self.name = name
 		
 		self.physicsBody = SKPhysicsBody(circleOfRadius: self.frame.size.width/3)
