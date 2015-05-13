@@ -17,6 +17,8 @@
 		7B5F73091B03CD05003AF0F1 /* SKTexture+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F73081B03CD05003AF0F1 /* SKTexture+Gradient.swift */; };
 		7B5F730B1B03DEC1003AF0F1 /* AngelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F730A1B03DEC1003AF0F1 /* AngelNode.swift */; };
 		7B5F730D1B03E1BC003AF0F1 /* PathogenNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F730C1B03E1BC003AF0F1 /* PathogenNode.swift */; };
+		7B5F730F1B03F19E003AF0F1 /* SneezeEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F730E1B03F19E003AF0F1 /* SneezeEmitter.swift */; };
+		7B5F73111B03F1C8003AF0F1 /* SneezeDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F73101B03F1C8003AF0F1 /* SneezeDetector.swift */; };
 		7BD49C141ACF283300700A0E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BD49C131ACF283300700A0E /* AVFoundation.framework */; };
 		7BD49C161ACF349400700A0E /* PathogenScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD49C151ACF349400700A0E /* PathogenScene.swift */; };
 		7BD49C181ACF354400700A0E /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BD49C171ACF354400700A0E /* SpriteKit.framework */; };
@@ -58,6 +60,8 @@
 		7B5F73081B03CD05003AF0F1 /* SKTexture+Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKTexture+Gradient.swift"; sourceTree = "<group>"; };
 		7B5F730A1B03DEC1003AF0F1 /* AngelNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AngelNode.swift; sourceTree = "<group>"; };
 		7B5F730C1B03E1BC003AF0F1 /* PathogenNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathogenNode.swift; sourceTree = "<group>"; };
+		7B5F730E1B03F19E003AF0F1 /* SneezeEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SneezeEmitter.swift; sourceTree = "<group>"; };
+		7B5F73101B03F1C8003AF0F1 /* SneezeDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SneezeDetector.swift; sourceTree = "<group>"; };
 		7BD49C131ACF283300700A0E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		7BD49C151ACF349400700A0E /* PathogenScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathogenScene.swift; sourceTree = "<group>"; };
 		7BD49C171ACF354400700A0E /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
@@ -111,6 +115,7 @@
 				7B25BFC91B039F7B008214D0 /* InfectedViewController.swift */,
 				7BD49C151ACF349400700A0E /* PathogenScene.swift */,
 				7B5F730C1B03E1BC003AF0F1 /* PathogenNode.swift */,
+				7B5F730E1B03F19E003AF0F1 /* SneezeEmitter.swift */,
 			);
 			name = "Pathogen View";
 			sourceTree = "<group>";
@@ -121,6 +126,7 @@
 				7B25BFCF1B03C194008214D0 /* HealthyViewController.swift */,
 				7B25BFCB1B03A8C5008214D0 /* AngelScene.swift */,
 				7B5F730A1B03DEC1003AF0F1 /* AngelNode.swift */,
+				7B5F73101B03F1C8003AF0F1 /* SneezeDetector.swift */,
 			);
 			name = "Angel View";
 			sourceTree = "<group>";
@@ -333,9 +339,11 @@
 			files = (
 				7B5F730D1B03E1BC003AF0F1 /* PathogenNode.swift in Sources */,
 				7B25BFCA1B039F7B008214D0 /* InfectedViewController.swift in Sources */,
+				7B5F730F1B03F19E003AF0F1 /* SneezeEmitter.swift in Sources */,
 				7DF0A3A01AC1A3BD00AF1EFA /* ViewController.swift in Sources */,
 				7B25BFD01B03C194008214D0 /* HealthyViewController.swift in Sources */,
 				7B5F73091B03CD05003AF0F1 /* SKTexture+Gradient.swift in Sources */,
+				7B5F73111B03F1C8003AF0F1 /* SneezeDetector.swift in Sources */,
 				7DF0A39E1AC1A3BD00AF1EFA /* AppDelegate.swift in Sources */,
 				7BD49C161ACF349400700A0E /* PathogenScene.swift in Sources */,
 				7B25BFCC1B03A8C5008214D0 /* AngelScene.swift in Sources */,
