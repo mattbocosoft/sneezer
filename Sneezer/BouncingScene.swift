@@ -90,13 +90,55 @@ class BouncingScene: SKScene, SKPhysicsContactDelegate {
 		let xImpulse = CGFloat(arc4random_uniform(maximumImpulse)) - CGFloat(maximumImpulse)/2.0
 		let yImpulse = CGFloat(arc4random_uniform(maximumImpulse)) - CGFloat(maximumImpulse)/2.0
 		node.physicsBody?.applyImpulse(CGVectorMake(xImpulse, yImpulse))
-		let angularImpulse = CGFloat(arc4random_uniform(5))/500.0
-		node.physicsBody?.applyAngularImpulse(CGFloat(angularImpulse))
+		node.physicsBody?.applyAngularImpulse(self.randomAngularImpulse())
 
 		self.bouncingNodes?.append(node)
 	}
 	
 	func didBeginContact(contact: SKPhysicsContact) {
 		
+	}
+
+	override func update(currentTime: NSTimeInterval) {
+
+		let maxSpeed: CGFloat = 250.0
+		let minSpeed: CGFloat = 10.0
+		for node in (self.children as! [SKSpriteNode]) {
+
+			if let physicsBody = node.physicsBody {
+
+				let xSpeed = fabs(physicsBody.velocity.dx) //sqrt(physicsBody.velocity.dx * physicsBody.velocity.dx + physicsBody.velocity.dy * physicsBody.velocity.dy)
+				let ySpeed = fabs(physicsBody.velocity.dy)
+
+				var xImpulse = CGFloat(0)
+				var yImpulse = CGFloat(0)
+				let maximumImpulse = UInt32(40)
+
+				if xSpeed < minSpeed {
+
+					xImpulse = CGFloat(arc4random_uniform(maximumImpulse)) - CGFloat(maximumImpulse)/2.0
+				}
+
+				if ySpeed < minSpeed {
+
+					yImpulse = CGFloat(arc4random_uniform(maximumImpulse)) - CGFloat(maximumImpulse)/2.0
+				}
+
+				node.physicsBody?.applyImpulse(CGVectorMake(xImpulse, yImpulse))
+
+				if(xImpulse != 0 || yImpulse != 0) {
+
+					node.physicsBody?.applyAngularImpulse(self.randomAngularImpulse())
+				}
+			}
+		}
+	}
+
+	func randomAngularImpulse() -> CGFloat {
+
+		let angularMagnitude = CGFloat(arc4random_uniform(4) + 2)
+		let angularDirection = CGFloat(arc4random_uniform(3)) - 1
+		let angularImpulse = (angularMagnitude*angularDirection)/500.0
+		return angularImpulse
 	}
 }
