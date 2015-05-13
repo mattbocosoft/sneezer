@@ -14,6 +14,7 @@
 		7B25BFD41B03C4D5008214D0 /* angel_wings.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B25BFD31B03C4D5008214D0 /* angel_wings.png */; };
 		7B25BFD61B03C4DA008214D0 /* flying-angel-without_wings.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B25BFD51B03C4DA008214D0 /* flying-angel-without_wings.png */; };
 		7B25BFDA1B03C4E0008214D0 /* img_sneezing2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B25BFD81B03C4E0008214D0 /* img_sneezing2.png */; };
+		7B5F73091B03CD05003AF0F1 /* SKTexture+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F73081B03CD05003AF0F1 /* SKTexture+Gradient.swift */; };
 		7BD49C141ACF283300700A0E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BD49C131ACF283300700A0E /* AVFoundation.framework */; };
 		7BD49C161ACF349400700A0E /* PathogenScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD49C151ACF349400700A0E /* PathogenScene.swift */; };
 		7BD49C181ACF354400700A0E /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BD49C171ACF354400700A0E /* SpriteKit.framework */; };
@@ -52,6 +53,7 @@
 		7B25BFD31B03C4D5008214D0 /* angel_wings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = angel_wings.png; path = Resources/angel_wings.png; sourceTree = "<group>"; };
 		7B25BFD51B03C4DA008214D0 /* flying-angel-without_wings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "flying-angel-without_wings.png"; path = "Resources/flying-angel-without_wings.png"; sourceTree = "<group>"; };
 		7B25BFD81B03C4E0008214D0 /* img_sneezing2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = img_sneezing2.png; path = Resources/img_sneezing2.png; sourceTree = "<group>"; };
+		7B5F73081B03CD05003AF0F1 /* SKTexture+Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKTexture+Gradient.swift"; sourceTree = "<group>"; };
 		7BD49C131ACF283300700A0E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		7BD49C151ACF349400700A0E /* PathogenScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathogenScene.swift; sourceTree = "<group>"; };
 		7BD49C171ACF354400700A0E /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
@@ -117,6 +119,14 @@
 			name = "Angel View";
 			sourceTree = "<group>";
 		};
+		7B5F73071B03CCE6003AF0F1 /* Helper Classes */ = {
+			isa = PBXGroup;
+			children = (
+				7B5F73081B03CD05003AF0F1 /* SKTexture+Gradient.swift */,
+			);
+			name = "Helper Classes";
+			sourceTree = "<group>";
+		};
 		7DECF2AC1ACC4D650082788A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +172,7 @@
 				7DF0A3A11AC1A3BD00AF1EFA /* Main.storyboard */,
 				7DF0A3A41AC1A3BD00AF1EFA /* Images.xcassets */,
 				7DF0A3A61AC1A3BD00AF1EFA /* LaunchScreen.xib */,
+				7B5F73071B03CCE6003AF0F1 /* Helper Classes */,
 				7DECF2AC1ACC4D650082788A /* Resources */,
 				7DF0A39B1AC1A3BD00AF1EFA /* Supporting Files */,
 			);
@@ -317,6 +328,7 @@
 				7B25BFCA1B039F7B008214D0 /* InfectedViewController.swift in Sources */,
 				7DF0A3A01AC1A3BD00AF1EFA /* ViewController.swift in Sources */,
 				7B25BFD01B03C194008214D0 /* HealthyViewController.swift in Sources */,
+				7B5F73091B03CD05003AF0F1 /* SKTexture+Gradient.swift in Sources */,
 				7DF0A39E1AC1A3BD00AF1EFA /* AppDelegate.swift in Sources */,
 				7BD49C161ACF349400700A0E /* PathogenScene.swift in Sources */,
 				7B25BFCC1B03A8C5008214D0 /* AngelScene.swift in Sources */,
