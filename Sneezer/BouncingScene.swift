@@ -74,7 +74,12 @@ class BouncingScene: SKScene, SKPhysicsContactDelegate {
 	func addBouncingNode(node: SKSpriteNode) {
 
 		self.addChild(node)
-	
+
+		node.alpha = 0.0
+		let fadeIn = SKAction.fadeInWithDuration(1.0)
+		
+		node.runAction(fadeIn)
+
 		node.physicsBody = SKPhysicsBody(circleOfRadius: node.frame.size.width/3)
 		node.physicsBody?.friction = 0.0
 		node.physicsBody?.restitution = 1.0
