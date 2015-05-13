@@ -19,8 +19,10 @@ class AngelScene: SKScene {
 	
 	override init(size: CGSize) {
 		super.init(size: size)
-		
-		let backgroundNode = SKSpriteNode(imageNamed: "Background.png")
+
+		let topColor = CIColor(red: 134/255, green: 194/255, blue: 253/255)
+		let bottomColor = CIColor(red: 22/255, green: 122/255, blue: 239/255)
+		let backgroundNode = SKSpriteNode(texture: SKTexture.textureWithVerticalGradientOfSize(self.frame.size, topColor: topColor, bottomColor: bottomColor))
 		backgroundNode.size = self.frame.size
 		backgroundNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2)
 		self.addChild(backgroundNode)
