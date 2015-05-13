@@ -155,10 +155,8 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 	//MARK: User-Interaction
     @IBAction func sneezeButtonTapped() {
 
-		let viewController = InfectedViewController()
-		viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-		self.presentViewController(viewController, animated: true, completion: nil)
 		self.playSoundEffect(SoundEffectType.Sneeze)
+		self.showInfectedView()
     }
 
 	//MARK: Sneeze Emission
@@ -247,6 +245,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
             println( "Proximity Unknown")
         }
 		self.playSoundEffect(SoundEffectType.BlessYou)
+		self.showHealthyView()
 	}
 
 	//MARK: Helper Functions
@@ -282,6 +281,22 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 			self.emitSneezingBeacon(1.0)
 
 		}
+	}
+
+	//MARK: Modal Views
+
+	func showHealthyView() {
+
+		let viewController = HealthyViewController()
+		viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+		self.presentViewController(viewController, animated: true, completion: nil)
+	}
+
+	func showInfectedView() {
+		
+		let viewController = InfectedViewController()
+		viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+		self.presentViewController(viewController, animated: true, completion: nil)
 	}
 
 	//MARK: -
