@@ -56,12 +56,6 @@ class PathogenScene: SKScene, SKPhysicsContactDelegate {
 		
 		node.runAction(fadeIn)
 
-		node.physicsBody = SKPhysicsBody(circleOfRadius: node.frame.size.width/3)
-		node.physicsBody?.friction = 0.0
-		node.physicsBody?.restitution = 1.0
-		node.physicsBody?.linearDamping = 0.0
-		node.physicsBody?.allowsRotation = true
-
 		let maximumImpulse = UInt32(40)
 		let xImpulse = CGFloat(arc4random_uniform(maximumImpulse)) - CGFloat(maximumImpulse)/2.0
 		let yImpulse = CGFloat(arc4random_uniform(maximumImpulse)) - CGFloat(maximumImpulse)/2.0
