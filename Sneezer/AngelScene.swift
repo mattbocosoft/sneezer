@@ -38,26 +38,14 @@ class AngelScene: SKScene {
 		
 		self.nodes = [SKSpriteNode]()
 		
-		for i in 0...5 {
-			self.addBouncingNode(self.generateAngelNode())
+		for i in 0...1 {
+			let angelNode = AngelNode()
+			angelNode.position = CGPointMake(self.frame.size.width/3, self.frame.size.height/3);
+			self.addNode(angelNode)
 		}
 	}
-	
-	func generateAngelNode() -> SKSpriteNode {
-		
-		let name = "Angel"
-		
-		let node = SKSpriteNode(imageNamed: "\(name)\(arc4random_uniform(2) + 1).png")
-		node.size = CGSizeMake(150, 150)
-		node.name = name
-		node.position = CGPointMake(self.frame.size.width/3, self.frame.size.height/3);
-		
-		//		node.physicsBody?.categoryBitMask = category.name
-		
-		return node
-	}
 
-	func addBouncingNode(node: SKSpriteNode) {
+	func addNode(node: SKSpriteNode) {
 		
 		self.addChild(node)
 		

@@ -39,24 +39,12 @@ class PathogenScene: SKScene, SKPhysicsContactDelegate {
 		self.bouncingNodes = [SKSpriteNode]()
 
 		for i in 0...5 {
-			self.addBouncingNode(self.generatePathogenNode())
+			let pathogenNode = PathogenNode()
+			pathogenNode.position = CGPointMake(self.frame.size.width/3, self.frame.size.height/3)
+			self.addBouncingNode(pathogenNode)
 		}
 
 		self.physicsWorld.contactDelegate = self
-	}
-
-	func generatePathogenNode() -> SKSpriteNode {
-		
-		let name = "Pathogen"
-		
-		let node = SKSpriteNode(imageNamed: "\(name)\(arc4random_uniform(3) + 1).png")
-		node.size = CGSizeMake(100, 100)
-		node.name = name
-		node.position = CGPointMake(self.frame.size.width/3, self.frame.size.height/3);
-		
-//		node.physicsBody?.categoryBitMask = category.name
-		
-		return node
 	}
 
 	func addBouncingNode(node: SKSpriteNode) {
