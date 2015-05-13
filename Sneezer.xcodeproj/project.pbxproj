@@ -12,7 +12,7 @@
 		7B25BFD01B03C194008214D0 /* HealthyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B25BFCF1B03C194008214D0 /* HealthyViewController.swift */; };
 		7B25BFD21B03C46D008214D0 /* explosion-cloud_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B25BFD11B03C46D008214D0 /* explosion-cloud_blue.png */; };
 		7B25BFD41B03C4D5008214D0 /* angel_wings.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B25BFD31B03C4D5008214D0 /* angel_wings.png */; };
-		7B25BFD61B03C4DA008214D0 /* flying-angel-without_wings.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B25BFD51B03C4DA008214D0 /* flying-angel-without_wings.png */; };
+		7B25BFD61B03C4DA008214D0 /* Angel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B25BFD51B03C4DA008214D0 /* Angel@2x.png */; };
 		7B25BFDA1B03C4E0008214D0 /* img_sneezing2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B25BFD81B03C4E0008214D0 /* img_sneezing2.png */; };
 		7B5F73091B03CD05003AF0F1 /* SKTexture+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F73081B03CD05003AF0F1 /* SKTexture+Gradient.swift */; };
 		7BD49C141ACF283300700A0E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BD49C131ACF283300700A0E /* AVFoundation.framework */; };
@@ -51,7 +51,7 @@
 		7B25BFCF1B03C194008214D0 /* HealthyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthyViewController.swift; sourceTree = "<group>"; };
 		7B25BFD11B03C46D008214D0 /* explosion-cloud_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "explosion-cloud_blue.png"; path = "Resources/explosion-cloud_blue.png"; sourceTree = "<group>"; };
 		7B25BFD31B03C4D5008214D0 /* angel_wings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = angel_wings.png; path = Resources/angel_wings.png; sourceTree = "<group>"; };
-		7B25BFD51B03C4DA008214D0 /* flying-angel-without_wings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "flying-angel-without_wings.png"; path = "Resources/flying-angel-without_wings.png"; sourceTree = "<group>"; };
+		7B25BFD51B03C4DA008214D0 /* Angel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Angel@2x.png"; path = "Resources/Angel@2x.png"; sourceTree = "<group>"; };
 		7B25BFD81B03C4E0008214D0 /* img_sneezing2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = img_sneezing2.png; path = Resources/img_sneezing2.png; sourceTree = "<group>"; };
 		7B5F73081B03CD05003AF0F1 /* SKTexture+Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKTexture+Gradient.swift"; sourceTree = "<group>"; };
 		7BD49C131ACF283300700A0E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -130,14 +130,14 @@
 		7DECF2AC1ACC4D650082788A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7D3441F61AC9A04100C358DD /* SneezeButtonImg.png */,
 				7DECF2AD1ACC62F20082788A /* BlessYou.m4a */,
 				7D3441F81ACB1C7D00C358DD /* FactorySneeze.m4a */,
+				7D3441F61AC9A04100C358DD /* SneezeButtonImg.png */,
 				7BD49C221AD028F500700A0E /* Pathogen1@2x.png */,
 				7BD49C231AD028F500700A0E /* Pathogen2@2x.png */,
 				7BD49C211AD028F500700A0E /* Pathogen3@2x.png */,
 				7B25BFD11B03C46D008214D0 /* explosion-cloud_blue.png */,
-				7B25BFD51B03C4DA008214D0 /* flying-angel-without_wings.png */,
+				7B25BFD51B03C4DA008214D0 /* Angel@2x.png */,
 				7B25BFD31B03C4D5008214D0 /* angel_wings.png */,
 				7B25BFD81B03C4E0008214D0 /* img_sneezing2.png */,
 			);
@@ -302,7 +302,7 @@
 				7DECF2AE1ACC62F20082788A /* BlessYou.m4a in Resources */,
 				7B25BFD21B03C46D008214D0 /* explosion-cloud_blue.png in Resources */,
 				7DF0A3A31AC1A3BD00AF1EFA /* Main.storyboard in Resources */,
-				7B25BFD61B03C4DA008214D0 /* flying-angel-without_wings.png in Resources */,
+				7B25BFD61B03C4DA008214D0 /* Angel@2x.png in Resources */,
 				7BD49C2A1AD028F500700A0E /* Pathogen2@2x.png in Resources */,
 				7DF0A3A81AC1A3BD00AF1EFA /* LaunchScreen.xib in Resources */,
 				7D3441F71AC9A04100C358DD /* SneezeButtonImg.png in Resources */,
