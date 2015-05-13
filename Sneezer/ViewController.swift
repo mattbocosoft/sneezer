@@ -159,6 +159,10 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 		self.showInfectedView()
     }
 
+	@IBAction func infoButtonTapped() {
+		
+	}
+
 	//MARK: Sneeze Emission
 	func emitSneezingBeacon(duration: NSTimeInterval) {
 
