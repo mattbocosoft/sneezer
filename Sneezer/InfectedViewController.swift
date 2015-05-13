@@ -9,7 +9,13 @@
 import UIKit
 import SpriteKit
 
+protocol InfectedViewControllerDelegate {
+	func infectedViewControllerCompleted()
+}
+
 class InfectedViewController: UIViewController {
+
+	var delegate: InfectedViewControllerDelegate?
 
 	override func loadView() {
 
@@ -39,6 +45,11 @@ class InfectedViewController: UIViewController {
 			// Present the scene.
 			skView.presentScene(scene)
 		}
+	}
+
+	@IBAction func userTappedClose() {
+
+		self.delegate?.infectedViewControllerCompleted()
 	}
 
     override func didReceiveMemoryWarning() {
