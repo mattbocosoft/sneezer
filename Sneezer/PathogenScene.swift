@@ -43,20 +43,6 @@ class PathogenScene: SKScene, SKPhysicsContactDelegate {
 		self.physicsWorld.contactDelegate = self
 	}
 
-	func generateAngelNode() -> SKSpriteNode {
-
-		let name = "Angel"
-
-		let node = SKSpriteNode(imageNamed: "\(name)\(arc4random_uniform(2) + 1).png")
-		node.size = CGSizeMake(150, 150)
-		node.name = name
-		node.position = CGPointMake(self.frame.size.width/3, self.frame.size.height/3);
-
-//		node.physicsBody?.categoryBitMask = category.name
-
-		return node
-	}
-
 	func generatePathogenNode() -> SKSpriteNode {
 		
 		let name = "Pathogen"
