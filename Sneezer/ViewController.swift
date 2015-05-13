@@ -61,7 +61,6 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, InfectedViewContr
 		// Hear the Beacon
 		self.sneezeDetector = SneezeDetector()
 		self.sneezeDetector?.delegate = self
-		self.sneezeDetector?.startListeningForSneezes()
     }
 
 	override func viewWillLayoutSubviews() {
