@@ -97,7 +97,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 	override func viewWillLayoutSubviews() {
 		super.viewWillLayoutSubviews()
 
-		let skView = self.view as SKView
+		let skView = self.view as! SKView
 
 		if skView.scene == nil {
 
@@ -121,18 +121,19 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 
 	//MARK: CLLocationManager Delegate Functions
 
-	func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [CLBeacon]!, inRegion region: CLBeaconRegion!) {
 
-		for beacon: CLBeacon in beacons {
+	func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
+
+		for beacon: CLBeacon in (beacons as! [CLBeacon]) {
 
 			println("Found beacon with proximity \(beacon.proximity)")
 		}
 
 		if beacons.count > 0 {
+
             if beacons.first?.proximity != CLProximity.Unknown {
                 self.sneezeDetected()
             }
-
 		}
 	}
 	
@@ -171,14 +172,14 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 		self.beaconManager?.stopAdvertising()
 		
 		// We must construct a CLBeaconRegion that represents the payload we want the device to beacon.
-		var peripheralData: NSDictionary?
+		var peripheralData: [NSObject : AnyObject]!
 		
 		let region = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "5EC30DE0-4710-470F-A26C-A37FBCEFE1D4"), major: 1, minor: 1, identifier: "com.SneezerApp")
-		peripheralData = region.peripheralDataWithMeasuredPower(-59)
+		peripheralData = region.peripheralDataWithMeasuredPower(-59) as [NSObject : AnyObject]!
 
 		// The region's peripheral data contains the CoreBluetooth-specific data we need to advertise.
 		if peripheralData != nil {
-			
+
 			self.beaconManager?.startAdvertising(peripheralData)
 		}
 
@@ -227,7 +228,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 	func playSoundEffect(type: SoundEffectType) {
 
 		let path: NSString? = NSBundle.mainBundle().pathForResource(type.description, ofType: "m4a")!
-		let url = NSURL(fileURLWithPath: path!)
+		let url = NSURL(fileURLWithPath: path! as String)
 
 		var error:NSError?
 		self.audioPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
