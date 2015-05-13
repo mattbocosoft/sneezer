@@ -20,7 +20,9 @@ class PathogenScene: SKScene, SKPhysicsContactDelegate {
 	override init(size: CGSize) {
 		super.init(size: size)
 
-		let backgroundNode = SKSpriteNode(imageNamed: "Background.png")
+		let topColor = CIColor(red: 252/255, green: 164/255, blue: 165/255)
+		let bottomColor = CIColor(red: 252/255, green: 16/255, blue: 29/255)
+		let backgroundNode = SKSpriteNode(texture: SKTexture.textureWithVerticalGradientOfSize(self.frame.size, topColor: topColor, bottomColor: bottomColor))
 		backgroundNode.size = self.frame.size
 		backgroundNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2)
 		self.addChild(backgroundNode)
