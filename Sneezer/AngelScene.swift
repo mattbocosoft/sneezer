@@ -11,7 +11,7 @@ import SpriteKit
 
 class AngelScene: SKScene {
 
-	private var nodes: [SKSpriteNode]?
+	private var nodes: [SKNode]?
 	
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
@@ -38,14 +38,19 @@ class AngelScene: SKScene {
 		
 		self.nodes = [SKSpriteNode]()
 		
-		for i in 0...1 {
+		for i in 0...0 {
 			let angelNode = AngelNode()
 			angelNode.position = CGPointMake(self.frame.size.width/3, self.frame.size.height/3);
 			self.addNode(angelNode)
+
+//			var dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC)))
+//			dispatch_after(dispatchTime, dispatch_get_main_queue(), { () -> Void in
+//				angelNode.poof()
+//			})
 		}
 	}
 
-	func addNode(node: SKSpriteNode) {
+	func addNode(node: SKNode) {
 		
 		self.addChild(node)
 		
@@ -53,16 +58,9 @@ class AngelScene: SKScene {
 		let fadeIn = SKAction.fadeInWithDuration(1.0)
 		
 		node.runAction(fadeIn)
-		
-		node.physicsBody = SKPhysicsBody(circleOfRadius: node.frame.size.width/3)
-		node.physicsBody?.friction = 0.0
-		node.physicsBody?.restitution = 1.0
-		node.physicsBody?.linearDamping = 0.0
-		node.physicsBody?.allowsRotation = true
-		
 		let maximumImpulse = UInt32(40)
 		let xImpulse = CGFloat(arc4random_uniform(maximumImpulse)) - CGFloat(maximumImpulse)/2.0
-		let yImpulse = CGFloat(arc4random_uniform(maximumImpulse)) - CGFloat(maximumImpulse)/2.0
+		let yImpulse = CGFloat(0)
 		node.physicsBody?.applyImpulse(CGVectorMake(xImpulse, yImpulse))
 		
 		self.nodes?.append(node)

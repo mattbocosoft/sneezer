@@ -10,11 +10,13 @@
 		7B25BFCA1B039F7B008214D0 /* InfectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B25BFC91B039F7B008214D0 /* InfectedViewController.swift */; };
 		7B25BFCC1B03A8C5008214D0 /* AngelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B25BFCB1B03A8C5008214D0 /* AngelScene.swift */; };
 		7B25BFD01B03C194008214D0 /* HealthyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B25BFCF1B03C194008214D0 /* HealthyViewController.swift */; };
-		7B25BFD21B03C46D008214D0 /* explosion-cloud_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B25BFD11B03C46D008214D0 /* explosion-cloud_blue.png */; };
+		7B25BFD21B03C46D008214D0 /* CloudExplosion@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B25BFD11B03C46D008214D0 /* CloudExplosion@2x.png */; };
 		7B25BFD41B03C4D5008214D0 /* angel_wings.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B25BFD31B03C4D5008214D0 /* angel_wings.png */; };
 		7B25BFD61B03C4DA008214D0 /* Angel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B25BFD51B03C4DA008214D0 /* Angel@2x.png */; };
 		7B25BFDA1B03C4E0008214D0 /* img_sneezing2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B25BFD81B03C4E0008214D0 /* img_sneezing2.png */; };
 		7B5F73091B03CD05003AF0F1 /* SKTexture+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F73081B03CD05003AF0F1 /* SKTexture+Gradient.swift */; };
+		7B5F730B1B03DEC1003AF0F1 /* AngelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F730A1B03DEC1003AF0F1 /* AngelNode.swift */; };
+		7B5F730D1B03E1BC003AF0F1 /* PathogenNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F730C1B03E1BC003AF0F1 /* PathogenNode.swift */; };
 		7BD49C141ACF283300700A0E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BD49C131ACF283300700A0E /* AVFoundation.framework */; };
 		7BD49C161ACF349400700A0E /* PathogenScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD49C151ACF349400700A0E /* PathogenScene.swift */; };
 		7BD49C181ACF354400700A0E /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BD49C171ACF354400700A0E /* SpriteKit.framework */; };
@@ -49,11 +51,13 @@
 		7B25BFC91B039F7B008214D0 /* InfectedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfectedViewController.swift; sourceTree = "<group>"; };
 		7B25BFCB1B03A8C5008214D0 /* AngelScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AngelScene.swift; sourceTree = "<group>"; };
 		7B25BFCF1B03C194008214D0 /* HealthyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthyViewController.swift; sourceTree = "<group>"; };
-		7B25BFD11B03C46D008214D0 /* explosion-cloud_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "explosion-cloud_blue.png"; path = "Resources/explosion-cloud_blue.png"; sourceTree = "<group>"; };
+		7B25BFD11B03C46D008214D0 /* CloudExplosion@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CloudExplosion@2x.png"; path = "Resources/CloudExplosion@2x.png"; sourceTree = "<group>"; };
 		7B25BFD31B03C4D5008214D0 /* angel_wings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = angel_wings.png; path = Resources/angel_wings.png; sourceTree = "<group>"; };
 		7B25BFD51B03C4DA008214D0 /* Angel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Angel@2x.png"; path = "Resources/Angel@2x.png"; sourceTree = "<group>"; };
 		7B25BFD81B03C4E0008214D0 /* img_sneezing2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = img_sneezing2.png; path = Resources/img_sneezing2.png; sourceTree = "<group>"; };
 		7B5F73081B03CD05003AF0F1 /* SKTexture+Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKTexture+Gradient.swift"; sourceTree = "<group>"; };
+		7B5F730A1B03DEC1003AF0F1 /* AngelNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AngelNode.swift; sourceTree = "<group>"; };
+		7B5F730C1B03E1BC003AF0F1 /* PathogenNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathogenNode.swift; sourceTree = "<group>"; };
 		7BD49C131ACF283300700A0E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		7BD49C151ACF349400700A0E /* PathogenScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathogenScene.swift; sourceTree = "<group>"; };
 		7BD49C171ACF354400700A0E /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
@@ -106,6 +110,7 @@
 			children = (
 				7B25BFC91B039F7B008214D0 /* InfectedViewController.swift */,
 				7BD49C151ACF349400700A0E /* PathogenScene.swift */,
+				7B5F730C1B03E1BC003AF0F1 /* PathogenNode.swift */,
 			);
 			name = "Pathogen View";
 			sourceTree = "<group>";
@@ -115,6 +120,7 @@
 			children = (
 				7B25BFCF1B03C194008214D0 /* HealthyViewController.swift */,
 				7B25BFCB1B03A8C5008214D0 /* AngelScene.swift */,
+				7B5F730A1B03DEC1003AF0F1 /* AngelNode.swift */,
 			);
 			name = "Angel View";
 			sourceTree = "<group>";
@@ -136,7 +142,7 @@
 				7BD49C221AD028F500700A0E /* Pathogen1@2x.png */,
 				7BD49C231AD028F500700A0E /* Pathogen2@2x.png */,
 				7BD49C211AD028F500700A0E /* Pathogen3@2x.png */,
-				7B25BFD11B03C46D008214D0 /* explosion-cloud_blue.png */,
+				7B25BFD11B03C46D008214D0 /* CloudExplosion@2x.png */,
 				7B25BFD51B03C4DA008214D0 /* Angel@2x.png */,
 				7B25BFD31B03C4D5008214D0 /* angel_wings.png */,
 				7B25BFD81B03C4E0008214D0 /* img_sneezing2.png */,
@@ -300,7 +306,7 @@
 				7B25BFDA1B03C4E0008214D0 /* img_sneezing2.png in Resources */,
 				7D3441F91ACB1C7E00C358DD /* FactorySneeze.m4a in Resources */,
 				7DECF2AE1ACC62F20082788A /* BlessYou.m4a in Resources */,
-				7B25BFD21B03C46D008214D0 /* explosion-cloud_blue.png in Resources */,
+				7B25BFD21B03C46D008214D0 /* CloudExplosion@2x.png in Resources */,
 				7DF0A3A31AC1A3BD00AF1EFA /* Main.storyboard in Resources */,
 				7B25BFD61B03C4DA008214D0 /* Angel@2x.png in Resources */,
 				7BD49C2A1AD028F500700A0E /* Pathogen2@2x.png in Resources */,
@@ -325,6 +331,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B5F730D1B03E1BC003AF0F1 /* PathogenNode.swift in Sources */,
 				7B25BFCA1B039F7B008214D0 /* InfectedViewController.swift in Sources */,
 				7DF0A3A01AC1A3BD00AF1EFA /* ViewController.swift in Sources */,
 				7B25BFD01B03C194008214D0 /* HealthyViewController.swift in Sources */,
@@ -332,6 +339,7 @@
 				7DF0A39E1AC1A3BD00AF1EFA /* AppDelegate.swift in Sources */,
 				7BD49C161ACF349400700A0E /* PathogenScene.swift in Sources */,
 				7B25BFCC1B03A8C5008214D0 /* AngelScene.swift in Sources */,
+				7B5F730B1B03DEC1003AF0F1 /* AngelNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
