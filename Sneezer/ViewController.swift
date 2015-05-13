@@ -97,20 +97,20 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 	override func viewWillLayoutSubviews() {
 		super.viewWillLayoutSubviews()
 
-		let skView = self.view as SKView
-
-		if skView.scene == nil {
-
-			skView.showsFPS = false
-			skView.showsNodeCount = false
-			
-			// Create and configure the scene.
-			let scene = MainScene(size: skView.bounds.size)
-			scene.scaleMode = SKSceneScaleMode.AspectFill
-
-			// Present the scene.
-			skView.presentScene(scene)
-		}
+//		let skView = self.view as! SKView
+//
+//		if skView.scene == nil {
+//
+//			skView.showsFPS = false
+//			skView.showsNodeCount = false
+//			
+//			// Create and configure the scene.
+//			let scene = BouncingScene(size: skView.bounds.size)
+//			scene.scaleMode = SKSceneScaleMode.AspectFill
+//
+//			// Present the scene.
+//			skView.presentScene(scene)
+//		}
 	}
 
 	//MARK: CBPeripheralManager Delegate Functions
@@ -121,21 +121,21 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 
 	//MARK: CLLocationManager Delegate Functions
 
-	func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [CLBeacon]!, inRegion region: CLBeaconRegion!) {
 
-		for beacon: CLBeacon in beacons {
+	func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
+
+		for beacon: CLBeacon in (beacons as! [CLBeacon]) {
 
 			println("Found beacon with proximity \(beacon.proximity)")
 		}
 
 		if beacons.count > 0 {
-            
+
             if beacons.first?.proximity != CLProximity.Unknown {
                 self.sneezeDetected(beacons.first!.proximity)
             }
 
-
-        }
+		}
 	}
 	
 	func locationManager(manager: CLLocationManager!, rangingBeaconsDidFailForRegion region: CLBeaconRegion!, withError error: NSError!) {
@@ -155,6 +155,9 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 	//MARK: User-Interaction
     @IBAction func sneezeButtonTapped() {
 
+		let viewController = InfectedViewController()
+		viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+		self.presentViewController(viewController, animated: true, completion: nil)
 		self.playSoundEffect(SoundEffectType.Sneeze)
     }
 
@@ -173,14 +176,14 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 		self.beaconManager?.stopAdvertising()
 		
 		// We must construct a CLBeaconRegion that represents the payload we want the device to beacon.
-		var peripheralData: NSDictionary?
+		var peripheralData: [NSObject : AnyObject]!
 		
 		let region = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "5EC30DE0-4710-470F-A26C-A37FBCEFE1D4"), major: 1, minor: 1, identifier: "com.SneezerApp")
-		peripheralData = region.peripheralDataWithMeasuredPower(-59)
+		peripheralData = region.peripheralDataWithMeasuredPower(-59) as [NSObject : AnyObject]!
 
 		// The region's peripheral data contains the CoreBluetooth-specific data we need to advertise.
 		if peripheralData != nil {
-			
+
 			self.beaconManager?.startAdvertising(peripheralData)
 		}
 
@@ -222,9 +225,6 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 		dispatch_after(delayTime, dispatch_get_main_queue()) { Blessings.hasRecentlyIssuedBlessing = false }
 
 		// Play "Bless You"
-<<<<<<< HEAD
-		self.playSoundEffect("BlessYou")
-
         let probability = CGFloat(arc4random_uniform(100) + 1) / 100.0
         
         
@@ -246,8 +246,6 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
         } else {
             println( "Proximity Unknown")
         }
-    }
-=======
 		self.playSoundEffect(SoundEffectType.BlessYou)
 	}
 
@@ -255,7 +253,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 	func playSoundEffect(type: SoundEffectType) {
 
 		let path: NSString? = NSBundle.mainBundle().pathForResource(type.description, ofType: "m4a")!
-		let url = NSURL(fileURLWithPath: path!)
+		let url = NSURL(fileURLWithPath: path! as String)
 
 		var error:NSError?
 		self.audioPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
@@ -285,7 +283,6 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 
 		}
 	}
->>>>>>> fc64e32c3c1275eeae42cc02a6282b56d3293b37
 
 	//MARK: -
 

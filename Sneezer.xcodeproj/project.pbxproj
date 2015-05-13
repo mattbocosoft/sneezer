@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B25BFCA1B039F7B008214D0 /* InfectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B25BFC91B039F7B008214D0 /* InfectedViewController.swift */; };
 		7BD49C141ACF283300700A0E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BD49C131ACF283300700A0E /* AVFoundation.framework */; };
-		7BD49C161ACF349400700A0E /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD49C151ACF349400700A0E /* MainScene.swift */; };
+		7BD49C161ACF349400700A0E /* PathogenScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD49C151ACF349400700A0E /* PathogenScene.swift */; };
 		7BD49C181ACF354400700A0E /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BD49C171ACF354400700A0E /* SpriteKit.framework */; };
 		7BD49C281AD028F500700A0E /* Pathogen3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BD49C211AD028F500700A0E /* Pathogen3@2x.png */; };
 		7BD49C291AD028F500700A0E /* Pathogen1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BD49C221AD028F500700A0E /* Pathogen1@2x.png */; };
@@ -42,8 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B25BFC91B039F7B008214D0 /* InfectedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfectedViewController.swift; sourceTree = "<group>"; };
 		7BD49C131ACF283300700A0E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		7BD49C151ACF349400700A0E /* MainScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScene.swift; sourceTree = "<group>"; };
+		7BD49C151ACF349400700A0E /* PathogenScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathogenScene.swift; sourceTree = "<group>"; };
 		7BD49C171ACF354400700A0E /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		7BD49C211AD028F500700A0E /* Pathogen3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pathogen3@2x.png"; path = "Resources/Pathogen3@2x.png"; sourceTree = "<group>"; };
 		7BD49C221AD028F500700A0E /* Pathogen1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pathogen1@2x.png"; path = "Resources/Pathogen1@2x.png"; sourceTree = "<group>"; };
@@ -93,6 +95,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B25BFCD1B03A8CB008214D0 /* Pathogen View */ = {
+			isa = PBXGroup;
+			children = (
+				7B25BFC91B039F7B008214D0 /* InfectedViewController.swift */,
+				7BD49C151ACF349400700A0E /* PathogenScene.swift */,
+			);
+			name = "Pathogen View";
+			sourceTree = "<group>";
+		};
 		7DECF2AC1ACC4D650082788A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,7 +144,7 @@
 			children = (
 				7DF0A39D1AC1A3BD00AF1EFA /* AppDelegate.swift */,
 				7DF0A39F1AC1A3BD00AF1EFA /* ViewController.swift */,
-				7BD49C151ACF349400700A0E /* MainScene.swift */,
+				7B25BFCD1B03A8CB008214D0 /* Pathogen View */,
 				7DF0A3A11AC1A3BD00AF1EFA /* Main.storyboard */,
 				7DF0A3A41AC1A3BD00AF1EFA /* Images.xcassets */,
 				7DF0A3A61AC1A3BD00AF1EFA /* LaunchScreen.xib */,
@@ -289,9 +300,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B25BFCA1B039F7B008214D0 /* InfectedViewController.swift in Sources */,
 				7DF0A3A01AC1A3BD00AF1EFA /* ViewController.swift in Sources */,
 				7DF0A39E1AC1A3BD00AF1EFA /* AppDelegate.swift in Sources */,
-				7BD49C161ACF349400700A0E /* MainScene.swift in Sources */,
+				7BD49C161ACF349400700A0E /* PathogenScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
