@@ -245,6 +245,8 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
             println( "Proximity Unknown")
         }
 		self.playSoundEffect(SoundEffectType.BlessYou)
+
+		//TODO: Show infected/healthy view depending on whether the user has been infected
 		self.showHealthyView()
 	}
 
