@@ -8,7 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController, InfectedViewControllerDelegate, SneezeEmitterDelegate, SneezeDetectorDelegate {
+struct Blessings {
+
+	static var enabled = true
+}
+
+class ViewController: UIViewController, HealthyViewControllerDelegate, InfectedViewControllerDelegate, SneezeEmitterDelegate, SneezeDetectorDelegate {
 
 	var sneezeEmitter: SneezeEmitter?
 	var sneezeDetector: SneezeDetector?
@@ -31,6 +36,8 @@ class ViewController: UIViewController, InfectedViewControllerDelegate, SneezeEm
 		
 		// Hear the Beacon
 		self.sneezeDetector = SneezeDetector(delegate: self)
+
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "blessYouSoundEffectFinished", name: SoundEffectNotifications.BlessingDidFinish, object: nil)
 	}
 
 	override func viewDidAppear(animated: Bool) {
@@ -81,10 +88,20 @@ class ViewController: UIViewController, InfectedViewControllerDelegate, SneezeEm
 	
 	func sneezeDetectorHeardSneeze() {
 
+		if !Blessings.enabled {
+			return
+		}
+		
+		Blessings.enabled = false
 		SoundEffectManager.sharedInstance.playSoundEffect(SoundEffectType.BlessYou)
 		
 		//TODO: Show infected/healthy view depending on whether the user has been infected
 		self.showHealthyView()
+	}
+	
+	func blessYouSoundEffectFinished() {
+
+		Blessings.enabled = true
 	}
 
 	//MARK: Modal Views
@@ -92,6 +109,7 @@ class ViewController: UIViewController, InfectedViewControllerDelegate, SneezeEm
 	func showHealthyView() {
 
 		let viewController = HealthyViewController()
+		viewController.delegate = self
 		viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
 		self.presentViewController(viewController, animated: true, completion: nil)
 	}
@@ -99,10 +117,20 @@ class ViewController: UIViewController, InfectedViewControllerDelegate, SneezeEm
 	func showInfectedView() {
 		
 		let viewController = InfectedViewController()
+		viewController.delegate = self
 		viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
 		self.presentViewController(viewController, animated: true, completion: nil)
 	}
+
+	//MARK: Healthy View Controller Delegate
 	
+	func healthyViewControllerAllAngelsPoofed() {
+
+		self.dismissViewControllerAnimated(true, completion: { () -> Void in
+
+			self.showInfectedView()
+		})
+	}
 	//MARK: Infected View Controller Delegate
 	
 	func infectedViewControllerCompleted() {

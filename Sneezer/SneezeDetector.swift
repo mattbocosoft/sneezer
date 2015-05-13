@@ -10,6 +10,17 @@ import UIKit
 import CoreBluetooth
 import CoreLocation
 
+struct SneezeDetection {
+
+	static var sneezeDetectionInvervalTheshold: NSTimeInterval = 3.0 // Minimum amount of time before detecting another sneeze
+	static var hasRecentlyDetectedSneeze = false
+}
+
+struct SneezeDetectionNotifications {
+
+	static let SneezeDetected = "SneezeDetectionNotifications.SneezeDetected"
+}
+
 protocol SneezeDetectorDelegate {
 
 	func sneezeDetectorStartedListening()
@@ -59,31 +70,68 @@ class SneezeDetector: NSObject, CLLocationManagerDelegate {
 		}
 	}
 
-	//MARK: Sneeze Detection
-	func startListeningForSneezes() {
-		
+	//MARK: Helper Functions
+
+	private func startListeningForSneezes() {
+
+//		self.debugContinuousSneezing()
+//		return
+
 		if let listenForSneezeRegion = self.listenForSneezeRegion {
 
 			self.locationManager?.startRangingBeaconsInRegion(listenForSneezeRegion)
 			self.delegate?.sneezeDetectorStartedListening()
 		}
 	}
+
+	private func debugSneezeOnce() {
+		
+		let randomSneezeInterval: NSTimeInterval = 2
+		let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(randomSneezeInterval * Double(NSEC_PER_SEC)))
+		
+		dispatch_after(delayTime, dispatch_get_main_queue()) {
+			
+			// Inform the delegate
+			self.delegate?.sneezeDetectorHeardSneeze()
+
+			// ...and post a global notification
+			NSNotificationCenter.defaultCenter().postNotificationName(SneezeDetectionNotifications.SneezeDetected, object: nil)
+		}
+	}
+
+	private func debugContinuousSneezing() {
+
+		let randomSneezeInterval: NSTimeInterval = 2
+		let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(randomSneezeInterval * Double(NSEC_PER_SEC)))
+		
+		dispatch_after(delayTime, dispatch_get_main_queue()) {
+			
+			// Inform the delegate
+			self.delegate?.sneezeDetectorHeardSneeze()
+			
+			// ...and post a global notification
+			NSNotificationCenter.defaultCenter().postNotificationName(SneezeDetectionNotifications.SneezeDetected, object: nil)
+
+			let randomSneezeInterval: NSTimeInterval = 10
+			let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(randomSneezeInterval * Double(NSEC_PER_SEC)))
+			dispatch_after(delayTime, dispatch_get_main_queue()) {
+				
+				self.debugContinuousSneezing()
+			}
+		}
+	}
 	
 	private func sneezeDetected(proximity: CLProximity) {
 		
-		if !Blessings.enabled {
-			return
-		}
-		
-		if Blessings.hasRecentlyIssuedBlessing {
+		if SneezeDetection.hasRecentlyDetectedSneeze {
 			
 			return
 		}
 		
-		Blessings.hasRecentlyIssuedBlessing = true
+		SneezeDetection.hasRecentlyDetectedSneeze = true
 		
-		let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(Blessings.blessYouTimeInvervalTheshold * Double(NSEC_PER_SEC)))
-		dispatch_after(delayTime, dispatch_get_main_queue()) { Blessings.hasRecentlyIssuedBlessing = false }
+		let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(SneezeDetection.sneezeDetectionInvervalTheshold * Double(NSEC_PER_SEC)))
+		dispatch_after(delayTime, dispatch_get_main_queue()) { SneezeDetection.hasRecentlyDetectedSneeze = false }
 		
 		// Play "Bless You"
 		let probability = CGFloat(arc4random_uniform(100) + 1) / 100.0
@@ -108,11 +156,14 @@ class SneezeDetector: NSObject, CLLocationManagerDelegate {
 			println( "Proximity Unknown")
 		}
 
+		// Inform the delegate
 		self.delegate?.sneezeDetectorHeardSneeze()
+
+		// ...and post a global notification
+		NSNotificationCenter.defaultCenter().postNotificationName(SneezeDetectionNotifications.SneezeDetected, object: nil)
 	}
 	
 	//MARK: CLLocationManager Delegate Functions
-	
 	
 	func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
 		
@@ -126,7 +177,6 @@ class SneezeDetector: NSObject, CLLocationManagerDelegate {
 			if beacons.first?.proximity != CLProximity.Unknown {
 				self.sneezeDetected(beacons.first!.proximity)
 			}
-			
 		}
 	}
 	

@@ -38,30 +38,40 @@ class AngelScene: SKScene {
 		
 		self.nodes = [SKSpriteNode]()
 		
-		for i in 0...0 {
+		for i in 0...5 {
 			let angelNode = AngelNode()
 			angelNode.position = CGPointMake(self.frame.size.width/3, self.frame.size.height/3);
 			self.addNode(angelNode)
-
-//			var dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC)))
-//			dispatch_after(dispatchTime, dispatch_get_main_queue(), { () -> Void in
-//				angelNode.poof()
-//			})
 		}
 	}
 
-	func addNode(node: SKNode) {
-		
-		self.addChild(node)
-		
+	func removeAngel() {
+
+		if let lastAngel = self.nodes?.last as? AngelNode {
+			
+			lastAngel.poof()
+			self.nodes?.removeLast()
+		}
+	}
+
+	func angelCount() -> Int {
+
+		return nodes?.count ?? 0
+	}
+
+	//MARK: Helper Function
+
+	private func addNode(node: SKNode) {
+
 		node.alpha = 0.0
-		let fadeIn = SKAction.fadeInWithDuration(1.0)
-		
-		node.runAction(fadeIn)
-		let maximumImpulse = UInt32(40)
-		let xImpulse = CGFloat(arc4random_uniform(maximumImpulse)) - CGFloat(maximumImpulse)/2.0
-		let yImpulse = CGFloat(0)
-		node.physicsBody?.applyImpulse(CGVectorMake(xImpulse, yImpulse))
+		self.addChild(node)
+		node.runAction(SKAction.fadeInWithDuration(1.0))
+
+		var circle = CAShapeLayer()
+		circle.frame = CGRectInset(CGRectMake(160, 160, 320, 320), 50, 50)
+		let circlePath = UIBezierPath(ovalInRect:circle.bounds).CGPath
+
+		node.runAction(SKAction.repeatActionForever(SKAction.followPath(circlePath, asOffset: false, orientToPath: true, speed: 40)))
 		
 		self.nodes?.append(node)
 	}

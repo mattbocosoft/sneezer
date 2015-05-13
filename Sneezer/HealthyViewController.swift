@@ -9,7 +9,18 @@
 import UIKit
 import SpriteKit
 
+protocol HealthyViewControllerDelegate {
+
+	func healthyViewControllerAllAngelsPoofed()
+}
+
 class HealthyViewController: UIViewController {
+
+	var delegate: HealthyViewControllerDelegate?
+
+	private var angelScene: AngelScene?
+
+	//MARK: View Lifecycle
 
 	override func loadView() {
 		
@@ -19,6 +30,8 @@ class HealthyViewController: UIViewController {
 	override func viewDidLoad() {
 
 		super.viewDidLoad()
+
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "sneezeDetected", name: SneezeDetectionNotifications.SneezeDetected, object: nil)
     }
 
 	override func viewWillLayoutSubviews() {
@@ -33,11 +46,26 @@ class HealthyViewController: UIViewController {
 			skView.showsNodeCount = false
 			
 			// Create and configure the scene.
-			let scene = AngelScene(size: skView.bounds.size)
-			scene.scaleMode = SKSceneScaleMode.AspectFill
+			self.angelScene = AngelScene(size: skView.bounds.size)
+			self.angelScene?.scaleMode = SKSceneScaleMode.AspectFill
 			
 			// Present the scene.
-			skView.presentScene(scene)
+			skView.presentScene(self.angelScene)
+		}
+	}
+
+	//MARK: Sneeze Detection
+	
+	func sneezeDetected() {
+
+		self.angelScene?.removeAngel()
+
+		if let angelScene = self.angelScene {
+
+			if angelScene.angelCount() == 0 {
+
+				self.delegate?.healthyViewControllerAllAngelsPoofed()
+			}
 		}
 	}
 
@@ -45,4 +73,9 @@ class HealthyViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+	
+	deinit {
+
+		NSNotificationCenter.defaultCenter().removeObserver(self)
+	}
 }

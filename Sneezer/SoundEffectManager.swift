@@ -23,17 +23,10 @@ enum SoundEffectType {
 	}
 }
 
-struct Blessings {
-
-	static var blessYouTimeInvervalTheshold: NSTimeInterval = 3.0 // Minimum amount of time before saying "Bless You" again
-	static var hasRecentlyIssuedBlessing = false
-	static var enabled = true
-}
-
 struct SoundEffectNotifications {
 
-	static let BlessingDidFinish = "BlessingDidFinishNotification"
-	static let SneezeDidFinish = "SneezeDidFinishNotification"
+	static let BlessingDidFinish = "SoundEffectNotifications.BlessingDidFinish"
+	static let SneezeDidFinish = "SoundEffectNotifications.SneezeDidFinish"
 }
 
 class SoundEffectManager: NSObject, AVAudioPlayerDelegate {
@@ -55,15 +48,13 @@ class SoundEffectManager: NSObject, AVAudioPlayerDelegate {
 		}
 		self.audioPlayer?.delegate = self
 		self.audioPlayer?.play()
-		
-		Blessings.enabled = false
 	}
 
 	//MARK: AVAudioPlayer Delegate
 
 	func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
 		
-		Blessings.enabled = true
+//		Blessings.enabled = true
 		
 		if player.url.lastPathComponent?.stringByDeletingPathExtension == SoundEffectType.Sneeze.description {
 
