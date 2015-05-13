@@ -32,7 +32,7 @@ struct Blessings {
 	static var enabled = true
 }
 
-class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationManagerDelegate, AVAudioPlayerDelegate {
+class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationManagerDelegate, AVAudioPlayerDelegate, InfectedViewControllerDelegate {
 
 	// Be the Beacon
 	var beaconManager: CBPeripheralManager?
@@ -297,6 +297,13 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 		let viewController = InfectedViewController()
 		viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
 		self.presentViewController(viewController, animated: true, completion: nil)
+	}
+	
+	//MARK: Infected View Controller Delegate
+	
+	func infectedViewControllerCompleted() {
+
+		self.dismissViewControllerAnimated(true, completion: nil)
 	}
 
 	//MARK: -
