@@ -105,7 +105,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate, CLLocationM
 			skView.showsNodeCount = false
 			
 			// Create and configure the scene.
-			let scene = MainScene(size: skView.bounds.size)
+			let scene = BouncingScene(size: skView.bounds.size)
 			scene.scaleMode = SKSceneScaleMode.AspectFill
 
 			// Present the scene.

@@ -1,5 +1,5 @@
 //
-//  MainScene.swift
+//  BouncingScene.swift
 //  Sneezer
 //
 //  Created by Matthew Thomas on 4/3/15.
@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class MainScene: SKScene, SKPhysicsContactDelegate {
+class BouncingScene: SKScene, SKPhysicsContactDelegate {
 
 	private var bouncingNodes: [SKSpriteNode]?
 
