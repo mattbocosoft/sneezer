@@ -80,6 +80,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, InfectedViewContr
 	}
 
 	//MARK: Helper Functions
+
 	func playSoundEffect(type: SoundEffectType) {
 
 		let path: NSString? = NSBundle.mainBundle().pathForResource(type.description, ofType: "m4a")!
@@ -101,7 +102,9 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, InfectedViewContr
 			self.requestSneezeButton.enabled = false
 		}
 	}
-	
+
+	//MARK: AVAudioPlayer Delegate
+
 	func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
 
 		Blessings.enabled = true
