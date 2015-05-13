@@ -95,6 +95,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B25BFCD1B03A8CB008214D0 /* Pathogen View */ = {
+			isa = PBXGroup;
+			children = (
+				7B25BFC91B039F7B008214D0 /* InfectedViewController.swift */,
+				7BD49C151ACF349400700A0E /* PathogenScene.swift */,
+			);
+			name = "Pathogen View";
+			sourceTree = "<group>";
+		};
 		7DECF2AC1ACC4D650082788A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,8 +144,7 @@
 			children = (
 				7DF0A39D1AC1A3BD00AF1EFA /* AppDelegate.swift */,
 				7DF0A39F1AC1A3BD00AF1EFA /* ViewController.swift */,
-				7B25BFC91B039F7B008214D0 /* InfectedViewController.swift */,
-				7BD49C151ACF349400700A0E /* PathogenScene.swift */,
+				7B25BFCD1B03A8CB008214D0 /* Pathogen View */,
 				7DF0A3A11AC1A3BD00AF1EFA /* Main.storyboard */,
 				7DF0A3A41AC1A3BD00AF1EFA /* Images.xcassets */,
 				7DF0A3A61AC1A3BD00AF1EFA /* LaunchScreen.xib */,
