@@ -14,6 +14,12 @@ class AngelNode: SKNode {
 	private var angelSpriteNode: SKSpriteNode?
 	private var cloudSpriteNode: SKSpriteNode?
 
+	var angelPhysicsBody: SKPhysicsBody? {
+		get {
+			return self.angelSpriteNode?.physicsBody
+		}
+	}
+
 	override init() {
 
 		super.init()
