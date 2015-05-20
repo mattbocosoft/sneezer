@@ -13,9 +13,8 @@ struct Blessings {
 	static var enabled = true
 }
 
-class ViewController: UIViewController, HealthyViewControllerDelegate, InfectedViewControllerDelegate, SneezeEmitterDelegate, SneezeDetectorDelegate {
+class ViewController: UIViewController, HealthyViewControllerDelegate, InfectedViewControllerDelegate, SneezeDetectorDelegate {
 
-	var sneezeEmitter: SneezeEmitter?
 	var sneezeDetector: SneezeDetector?
 
 	required init(coder aDecoder: NSCoder) {
@@ -30,9 +29,6 @@ class ViewController: UIViewController, HealthyViewControllerDelegate, InfectedV
 	override func viewDidLoad() {
 
 		super.viewDidLoad()
-
-		// Be the Beacon
-		self.sneezeEmitter = SneezeEmitter(delegate: self)
 		
 		// Hear the Beacon
 		self.sneezeDetector = SneezeDetector(delegate: self)
@@ -49,43 +45,19 @@ class ViewController: UIViewController, HealthyViewControllerDelegate, InfectedV
     @IBAction func sneezeButtonTapped() {
 
 		self.requestSneezeButton.enabled = false
-
-		self.sneezeEmitter?.sneezeContinuously()
+		self.showInfectedView()
     }
 
 	@IBAction func infoButtonTapped() {
-		
+
 	}
 
-	//MARK: Sneeze Emitter Delegate
-	
-	func sneezeEmitterStartedSneezing() {
-
-		self.showInfectedView()
-	}
-	
-	func sneezeEmitterSneezingFailed(errorMessage: String) {
-
-		let title = "Error"
-		let cancelButtonTitle = "OK"
-		UIAlertView(title: title, message: errorMessage, delegate: nil, cancelButtonTitle: nil, otherButtonTitles: cancelButtonTitle).show()
-
-		self.requestSneezeButton.enabled = true
-		self.dismissViewControllerAnimated(true, completion: nil)
-	}
-	
-	func sneezeEmitterStoppedSneezing() {
-
-		self.requestSneezeButton.enabled = true
-		self.dismissViewControllerAnimated(true, completion: nil)
-	}
-	
 	//MARK: Sneeze Detector Delegate
-	
+
 	func sneezeDetectorStartedListening() {
 
 	}
-	
+
 	func sneezeDetectorHeardSneeze() {
 
 		if !Blessings.enabled {
@@ -135,7 +107,9 @@ class ViewController: UIViewController, HealthyViewControllerDelegate, InfectedV
 	
 	func infectedViewControllerCompleted() {
 
-		self.dismissViewControllerAnimated(true, completion: nil)
+		self.dismissViewControllerAnimated(true, completion: { () -> Void in
+			self.requestSneezeButton.enabled = true
+		})
 	}
 
 	//MARK: -

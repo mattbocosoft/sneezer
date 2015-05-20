@@ -13,10 +13,12 @@ protocol InfectedViewControllerDelegate {
 	func infectedViewControllerCompleted()
 }
 
-class InfectedViewController: UIViewController {
+class InfectedViewController: UIViewController, SneezeEmitterDelegate {
 
+	var sneezeEmitter: SneezeEmitter?
 	var delegate: InfectedViewControllerDelegate?
 
+	//MARK: View Lifecycle
 	override func loadView() {
 
 		self.view = SKView()
@@ -25,7 +27,16 @@ class InfectedViewController: UIViewController {
     override func viewDidLoad() {
 
 		super.viewDidLoad()
+
+		// Be the Beacon
+		self.sneezeEmitter = SneezeEmitter(delegate: self)
     }
+	
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+
+		self.sneezeEmitter?.sneezeContinuously()
+	}
 
 	override func viewWillLayoutSubviews() {
 
@@ -47,13 +58,35 @@ class InfectedViewController: UIViewController {
 		}
 	}
 
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
+	}
+
+	//MARK: User Interaction
+
 	@IBAction func userTappedClose() {
 
 		self.delegate?.infectedViewControllerCompleted()
 	}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+	//MARK: Sneeze Emitter Delegate
+	
+	func sneezeEmitterStartedSneezing() {
+
+	}
+	
+	func sneezeEmitterSneezingFailed(errorMessage: String) {
+		
+		let title = "Error"
+		let cancelButtonTitle = "OK"
+		UIAlertView(title: title, message: errorMessage, delegate: nil, cancelButtonTitle: nil, otherButtonTitles: cancelButtonTitle).show()
+
+		self.delegate?.infectedViewControllerCompleted()
+	}
+
+	func sneezeEmitterStoppedSneezing() {
+
+		self.delegate?.infectedViewControllerCompleted()
+	}
 }
