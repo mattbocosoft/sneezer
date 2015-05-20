@@ -57,6 +57,11 @@ class SneezeEmitter: NSObject, CBPeripheralManagerDelegate {
 
 	func sneezeContinuously() {
 
+		// Already sneezing
+		if self.continuousSneezing {
+			return
+		}
+
 		if self.beaconManager?.state != CBPeripheralManagerState.PoweredOn {
 			
 			self.delegate?.sneezeEmitterSneezingFailed("Bluetooth must be enabled to sneeze")
