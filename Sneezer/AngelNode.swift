@@ -12,7 +12,7 @@ import SpriteKit
 class AngelNode: SKNode {
 
 	private var angelSpriteNode: SKSpriteNode?
-	private var cloudeSpriteNode: SKSpriteNode?
+	private var cloudSpriteNode: SKSpriteNode?
 
 	override init() {
 
@@ -60,6 +60,8 @@ class AngelNode: SKNode {
 		
 		let scaleSequence = SKAction.sequence([scaleUpAction, scaleDownAction])
 		cloudNode.runAction(scaleSequence)
+
+		self.cloudSpriteNode = cloudNode
 	}
 
 	required init(coder aDecoder: NSCoder) {
