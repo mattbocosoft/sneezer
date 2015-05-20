@@ -32,8 +32,6 @@ class HomeViewController: UIViewController, HealthyViewControllerDelegate, Infec
 		
 		// Hear the Beacon
 		self.sneezeDetector = SneezeDetector(delegate: self)
-
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: "blessYouSoundEffectFinished", name: SoundEffectNotifications.BlessingDidFinish, object: nil)
 	}
 
 	override func viewDidAppear(animated: Bool) {
@@ -65,7 +63,6 @@ class HomeViewController: UIViewController, HealthyViewControllerDelegate, Infec
 		}
 		
 		Blessings.enabled = false
-		SoundEffectManager.sharedInstance.playSoundEffect(SoundEffectType.BlessYou)
 
 		// There is already a presented view controller
 		if self.presentedViewController != nil {
@@ -74,11 +71,6 @@ class HomeViewController: UIViewController, HealthyViewControllerDelegate, Infec
 
 		//TODO: Show infected/healthy view depending on whether the user has been infected
 		self.showHealthyView()
-	}
-	
-	func blessYouSoundEffectFinished() {
-
-		Blessings.enabled = true
 	}
 
 	//MARK: Modal Views
