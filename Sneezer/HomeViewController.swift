@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  Sneezer
 //
 //  Created by William Loftus on 3/24/15.
@@ -13,7 +13,7 @@ struct Blessings {
 	static var enabled = true
 }
 
-class ViewController: UIViewController, HealthyViewControllerDelegate, InfectedViewControllerDelegate, SneezeDetectorDelegate {
+class HomeViewController: UIViewController, HealthyViewControllerDelegate, InfectedViewControllerDelegate, SneezeDetectorDelegate {
 
 	var sneezeDetector: SneezeDetector?
 

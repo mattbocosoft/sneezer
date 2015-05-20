@@ -30,7 +30,7 @@
 		7D3441F91ACB1C7E00C358DD /* FactorySneeze.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7D3441F81ACB1C7D00C358DD /* FactorySneeze.m4a */; };
 		7DECF2AE1ACC62F20082788A /* BlessYou.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DECF2AD1ACC62F20082788A /* BlessYou.m4a */; };
 		7DF0A39E1AC1A3BD00AF1EFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF0A39D1AC1A3BD00AF1EFA /* AppDelegate.swift */; };
-		7DF0A3A01AC1A3BD00AF1EFA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF0A39F1AC1A3BD00AF1EFA /* ViewController.swift */; };
+		7DF0A3A01AC1A3BD00AF1EFA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF0A39F1AC1A3BD00AF1EFA /* HomeViewController.swift */; };
 		7DF0A3A31AC1A3BD00AF1EFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DF0A3A11AC1A3BD00AF1EFA /* Main.storyboard */; };
 		7DF0A3A51AC1A3BD00AF1EFA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DF0A3A41AC1A3BD00AF1EFA /* Images.xcassets */; };
 		7DF0A3A81AC1A3BD00AF1EFA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DF0A3A61AC1A3BD00AF1EFA /* LaunchScreen.xib */; };
@@ -76,7 +76,7 @@
 		7DF0A3981AC1A3BD00AF1EFA /* Sneezer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sneezer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DF0A39C1AC1A3BD00AF1EFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DF0A39D1AC1A3BD00AF1EFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7DF0A39F1AC1A3BD00AF1EFA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7DF0A39F1AC1A3BD00AF1EFA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		7DF0A3A21AC1A3BD00AF1EFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7DF0A3A41AC1A3BD00AF1EFA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7DF0A3A71AC1A3BD00AF1EFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -181,7 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				7DF0A39D1AC1A3BD00AF1EFA /* AppDelegate.swift */,
-				7DF0A39F1AC1A3BD00AF1EFA /* ViewController.swift */,
+				7DF0A39F1AC1A3BD00AF1EFA /* HomeViewController.swift */,
 				7B25BFCD1B03A8CB008214D0 /* Pathogen View */,
 				7B25BFCE1B03BF68008214D0 /* Angel View */,
 				7DF0A3A11AC1A3BD00AF1EFA /* Main.storyboard */,
@@ -343,7 +343,7 @@
 				7B5F730D1B03E1BC003AF0F1 /* PathogenNode.swift in Sources */,
 				7B25BFCA1B039F7B008214D0 /* InfectedViewController.swift in Sources */,
 				7B5F730F1B03F19E003AF0F1 /* SneezeEmitter.swift in Sources */,
-				7DF0A3A01AC1A3BD00AF1EFA /* ViewController.swift in Sources */,
+				7DF0A3A01AC1A3BD00AF1EFA /* HomeViewController.swift in Sources */,
 				7B5F73131B03FD4E003AF0F1 /* SoundEffectManager.swift in Sources */,
 				7B25BFD01B03C194008214D0 /* HealthyViewController.swift in Sources */,
 				7B5F73091B03CD05003AF0F1 /* SKTexture+Gradient.swift in Sources */,
