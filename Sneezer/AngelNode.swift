@@ -9,40 +9,28 @@
 import UIKit
 import SpriteKit
 
-class AngelNode: SKNode {
+class AngelNode: SKSpriteNode {
 
-	private var angelSpriteNode: SKSpriteNode?
-	private var cloudSpriteNode: SKSpriteNode?
-
-	var angelPhysicsBody: SKPhysicsBody? {
-		get {
-			return self.angelSpriteNode?.physicsBody
-		}
-	}
-
-	override init() {
-
-		super.init()
+	init() {
 
 		let name = "Angel"
+		let texture = SKTexture(imageNamed: "\(name).png")
+		super.init(texture: texture, color: nil, size: CGSizeMake(100, 100))
+
 		self.name = name
 
-		self.angelSpriteNode = SKSpriteNode(imageNamed: "\(name).png")
-		self.angelSpriteNode?.size = CGSizeMake(150, 150)
-		self.addChild(self.angelSpriteNode!)
-
-		self.angelSpriteNode?.physicsBody = SKPhysicsBody(circleOfRadius: self.angelSpriteNode!.frame.size.width/3)
-		self.angelSpriteNode?.physicsBody?.friction = 0.0
-		self.angelSpriteNode?.physicsBody?.restitution = 1.0
-		self.angelSpriteNode?.physicsBody?.linearDamping = 0.0
+		self.physicsBody = SKPhysicsBody(circleOfRadius: self.frame.size.width/3)
+		self.physicsBody?.friction = 0.0
+		self.physicsBody?.restitution = 1.0
+		self.physicsBody?.linearDamping = 0.0
 	}
 
 	func poof() {
-		
-		let name = "CloudExplosion"
-		
-		let cloudNode = SKSpriteNode(imageNamed: "\(name).png")
-		cloudNode.size = CGSizeMake(150, 150)
+
+		let cloudName = "CloudExplosion"
+		let cloudNode = SKSpriteNode(imageNamed: "\(cloudName).png")
+
+		cloudNode.size = self.size
 		cloudNode.name = name
 		cloudNode.alpha = 0.0
 		self.addChild(cloudNode)
@@ -50,24 +38,23 @@ class AngelNode: SKNode {
 		let inDuration = 0.2
 		let outDuration = 1.0
 
-		// Angel Fade
-		self.angelSpriteNode?.runAction(SKAction.fadeOutWithDuration(inDuration))
+		let cloudMaximumScale = CGFloat(1.5)
 
-		// Cloud Fade Sequence
-		let fadeInAction = SKAction.fadeInWithDuration(inDuration)
-		let fadeOutAction = SKAction.fadeOutWithDuration(outDuration)
-		
-		let fadeSequence = SKAction.sequence([fadeInAction, fadeOutAction])
-		cloudNode.runAction(fadeSequence)
+		let inGroup = SKAction.group([SKAction.fadeInWithDuration(inDuration), SKAction.scaleTo(cloudMaximumScale, duration: inDuration)])
+		cloudNode.runAction(inGroup, completion: { () -> Void in
 
-		// Cloud Scale Sequence
-		let scaleUpAction = SKAction.scaleBy(1.5, duration: inDuration)
-		let scaleDownAction = SKAction.scaleBy(0.8, duration: outDuration)
-		
-		let scaleSequence = SKAction.sequence([scaleUpAction, scaleDownAction])
-		cloudNode.runAction(scaleSequence)
+			cloudNode.removeFromParent()
+			self.texture = SKTexture(imageNamed: "\(cloudName).png")
+			self.setScale(cloudMaximumScale)
 
-		self.cloudSpriteNode = cloudNode
+			let fadeOutAction = SKAction.fadeOutWithDuration(outDuration)
+			let scaleDownAction = SKAction.scaleTo(0.8, duration: outDuration)
+			let outGroup = SKAction.group([fadeOutAction, scaleDownAction])
+
+			self.runAction(outGroup, completion: { () -> Void in
+				self.removeFromParent()
+			})
+		})
 	}
 
 	required init(coder aDecoder: NSCoder) {

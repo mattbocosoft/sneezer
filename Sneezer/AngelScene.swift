@@ -59,7 +59,7 @@ class AngelScene: SKScene {
 		let maximumImpulse = UInt32(40)
 		let xImpulse = CGFloat(arc4random_uniform(maximumImpulse)) - CGFloat(maximumImpulse)/2.0
 		let yImpulse = CGFloat(arc4random_uniform(maximumImpulse)) - CGFloat(maximumImpulse)/2.0
-		node.angelPhysicsBody?.applyImpulse(CGVectorMake(xImpulse, yImpulse))
+		node.physicsBody?.applyImpulse(CGVectorMake(xImpulse, yImpulse))
 
 		self.nodes?.append(node)
 	}
@@ -86,7 +86,7 @@ class AngelScene: SKScene {
 		let minSpeed: CGFloat = 10.0
 		for node in self.nodes! {
 			
-			if let physicsBody = node.angelPhysicsBody {
+			if let physicsBody = node.physicsBody {
 				
 				let totalSpeed = sqrt(physicsBody.velocity.dx * physicsBody.velocity.dx + physicsBody.velocity.dy * physicsBody.velocity.dy)
 				
