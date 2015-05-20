@@ -66,7 +66,12 @@ class HomeViewController: UIViewController, HealthyViewControllerDelegate, Infec
 		
 		Blessings.enabled = false
 		SoundEffectManager.sharedInstance.playSoundEffect(SoundEffectType.BlessYou)
-		
+
+		// There is already a presented view controller
+		if self.presentedViewController != nil {
+			return
+		}
+
 		//TODO: Show infected/healthy view depending on whether the user has been infected
 		self.showHealthyView()
 	}
