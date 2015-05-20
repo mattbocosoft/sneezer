@@ -68,8 +68,14 @@ class AngelScene: SKScene {
 		
 		if let lastAngel = self.nodes?.last {
 
-			lastAngel.poof(completion: block)
 			self.nodes?.removeLast()
+
+			lastAngel.poof(completion: { () -> Void in
+
+				block()
+			})
+		} else {
+			block()
 		}
 	}
 	

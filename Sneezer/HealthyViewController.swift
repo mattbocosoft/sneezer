@@ -33,6 +33,13 @@ class HealthyViewController: UIViewController {
 
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: "sneezeDetected", name: SneezeDetectionNotifications.SneezeDetected, object: nil)
     }
+	
+	override func viewDidAppear(animated: Bool) {
+
+		super.viewDidAppear(animated)
+
+		self.playBlessYouSoundEffect()
+	}
 
 	override func viewWillLayoutSubviews() {
 		
@@ -58,19 +65,21 @@ class HealthyViewController: UIViewController {
 	
 	func sneezeDetected() {
 
-		let soundEffectAction = SKAction.playSoundFileNamed("BlessYou.m4a", waitForCompletion: true)
-		self.angelScene?.runAction(soundEffectAction)
-
+		self.playBlessYouSoundEffect()
 		self.angelScene?.removeAngel(completion: { () -> Void in
 
-			if let angelScene = self.angelScene {
-				
-				if angelScene.angelCount() == 0 {
-					
-					self.delegate?.healthyViewControllerAllAngelsPoofed()
-				}
-			}
 		})
+
+		if self.angelScene?.angelCount() == 0 {
+			
+			self.delegate?.healthyViewControllerAllAngelsPoofed()
+		}
+	}
+	
+	func playBlessYouSoundEffect() {
+		
+		let soundEffectAction = SKAction.playSoundFileNamed("BlessYou.m4a", waitForCompletion: true)
+		self.angelScene?.runAction(soundEffectAction)
 	}
 
     override func didReceiveMemoryWarning() {

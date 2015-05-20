@@ -33,6 +33,8 @@ class InfectedViewController: UIViewController, SneezeEmitterDelegate {
 
 		// Be the Beacon
 		self.sneezeEmitter = SneezeEmitter(delegate: self)
+
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "sneezeDetected", name: SneezeDetectionNotifications.SneezeDetected, object: nil)
     }
 	
 	override func viewDidAppear(animated: Bool) {
@@ -65,6 +67,19 @@ class InfectedViewController: UIViewController, SneezeEmitterDelegate {
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
+	}
+
+	//MARK: Sneeze Detection
+	
+	func sneezeDetected() {
+
+		self.playBlessYouSoundEffect()
+	}
+	
+	func playBlessYouSoundEffect() {
+		
+		let soundEffectAction = SKAction.playSoundFileNamed("BlessYou.m4a", waitForCompletion: true)
+		self.pathogenScene?.runAction(soundEffectAction)
 	}
 
 	//MARK: User Interaction
