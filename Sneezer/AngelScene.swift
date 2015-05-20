@@ -64,11 +64,11 @@ class AngelScene: SKScene {
 		self.nodes?.append(node)
 	}
 	
-	func removeAngel() {
+	func removeAngel(completion block: (() -> Void)!) {
 		
 		if let lastAngel = self.nodes?.last {
-			
-			lastAngel.poof()
+
+			lastAngel.poof(completion: block)
 			self.nodes?.removeLast()
 		}
 	}

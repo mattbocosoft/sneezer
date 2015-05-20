@@ -39,7 +39,7 @@ class AngelNode: SKSpriteNode {
 		self.cloudNode.alpha = 0.0
 	}
 
-	func poof() {
+	func poof(completion block: (() -> Void)!) {
 
 		self.addChild(self.cloudNode)
 
@@ -60,7 +60,7 @@ class AngelNode: SKSpriteNode {
 			let outGroup = SKAction.group([fadeOutAction, scaleDownAction])
 
 			self.runAction(outGroup, completion: { () -> Void in
-				self.removeFromParent()
+				self.runAction(SKAction.removeFromParent(), completion: block)
 			})
 		})
 	}

@@ -58,15 +58,19 @@ class HealthyViewController: UIViewController {
 	
 	func sneezeDetected() {
 
-		self.angelScene?.removeAngel()
+		let soundEffectAction = SKAction.playSoundFileNamed("BlessYou.m4a", waitForCompletion: true)
+		self.angelScene?.runAction(soundEffectAction)
 
-		if let angelScene = self.angelScene {
+		self.angelScene?.removeAngel(completion: { () -> Void in
 
-			if angelScene.angelCount() == 0 {
-
-				self.delegate?.healthyViewControllerAllAngelsPoofed()
+			if let angelScene = self.angelScene {
+				
+				if angelScene.angelCount() == 0 {
+					
+					self.delegate?.healthyViewControllerAllAngelsPoofed()
+				}
 			}
-		}
+		})
 	}
 
     override func didReceiveMemoryWarning() {
