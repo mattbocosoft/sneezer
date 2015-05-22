@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -20,7 +20,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xW4-Gd-4Af" userLabel="Sneeze Button">
                                 <rect key="frame" x="196" y="196" width="208" height="208"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="208" id="UVm-qv-Z5b"/>
+                                    <constraint firstAttribute="width" constant="208" id="l8e-Kr-KUX"/>
                                 </constraints>
                                 <state key="normal" image="SneezeButtonImg.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -41,14 +41,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="xW4-Gd-4Af" secondAttribute="centerY" id="1tp-ww-ZyN"/>
+                            <constraint firstItem="xW4-Gd-4Af" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="361-hJ-bFk"/>
                             <constraint firstAttribute="centerY" secondItem="xW4-Gd-4Af" secondAttribute="centerY" constant="118" id="5pt-7J-v0M"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="us3-7L-uFK" secondAttribute="bottom" constant="8" symbolic="YES" id="CDQ-pg-neR"/>
-                            <constraint firstAttribute="centerY" secondItem="xW4-Gd-4Af" secondAttribute="centerY" id="D7j-jZ-mDv"/>
-                            <constraint firstAttribute="centerX" secondItem="xW4-Gd-4Af" secondAttribute="centerX" id="WDQ-OS-x0Q"/>
+                            <constraint firstItem="xW4-Gd-4Af" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="176" id="Cky-5B-aQa"/>
                             <constraint firstAttribute="centerX" secondItem="xW4-Gd-4Af" secondAttribute="centerX" constant="-2" id="Xj0-JC-ByG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="us3-7L-uFK" secondAttribute="trailing" id="ZL9-TT-LEh"/>
-                            <constraint firstAttribute="centerX" secondItem="xW4-Gd-4Af" secondAttribute="centerX" id="atH-UV-PPQ"/>
+                            <constraint firstItem="xW4-Gd-4Af" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="s62-0Z-n8A"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -66,6 +65,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="SneezeButtonImg.png" width="208" height="208"/>
+        <image name="SneezeButtonImg.png" width="1400" height="1400"/>
     </resources>
 </document>

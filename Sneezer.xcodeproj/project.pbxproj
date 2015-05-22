@@ -26,8 +26,10 @@
 		7BD49C281AD028F500700A0E /* Pathogen3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BD49C211AD028F500700A0E /* Pathogen3@2x.png */; };
 		7BD49C291AD028F500700A0E /* Pathogen1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BD49C221AD028F500700A0E /* Pathogen1@2x.png */; };
 		7BD49C2A1AD028F500700A0E /* Pathogen2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BD49C231AD028F500700A0E /* Pathogen2@2x.png */; };
-		7D3441F71AC9A04100C358DD /* SneezeButtonImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3441F61AC9A04100C358DD /* SneezeButtonImg.png */; };
-		7D3441F91ACB1C7E00C358DD /* FactorySneeze.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7D3441F81ACB1C7D00C358DD /* FactorySneeze.m4a */; };
+		7D3441F71AC9A04100C358DD /* SneezeButtonImgOld.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3441F61AC9A04100C358DD /* SneezeButtonImgOld.png */; };
+		7D3441F91ACB1C7E00C358DD /* FactorySneezeMale.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7D3441F81ACB1C7D00C358DD /* FactorySneezeMale.m4a */; };
+		7DE9E1791B0E0C7800EE2310 /* SneezeButtonImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9E1781B0E0C7800EE2310 /* SneezeButtonImg.png */; };
+		7DE9E17B1B0F731500EE2310 /* FactorySneeze.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9E17A1B0F731500EE2310 /* FactorySneeze.m4a */; };
 		7DECF2AE1ACC62F20082788A /* BlessYou.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DECF2AD1ACC62F20082788A /* BlessYou.m4a */; };
 		7DF0A39E1AC1A3BD00AF1EFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF0A39D1AC1A3BD00AF1EFA /* AppDelegate.swift */; };
 		7DF0A3A01AC1A3BD00AF1EFA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF0A39F1AC1A3BD00AF1EFA /* HomeViewController.swift */; };
@@ -70,8 +72,10 @@
 		7BD49C211AD028F500700A0E /* Pathogen3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pathogen3@2x.png"; path = "Resources/Pathogen3@2x.png"; sourceTree = "<group>"; };
 		7BD49C221AD028F500700A0E /* Pathogen1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pathogen1@2x.png"; path = "Resources/Pathogen1@2x.png"; sourceTree = "<group>"; };
 		7BD49C231AD028F500700A0E /* Pathogen2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pathogen2@2x.png"; path = "Resources/Pathogen2@2x.png"; sourceTree = "<group>"; };
-		7D3441F61AC9A04100C358DD /* SneezeButtonImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SneezeButtonImg.png; path = Graphics/SneezeButtonImg.png; sourceTree = "<group>"; };
-		7D3441F81ACB1C7D00C358DD /* FactorySneeze.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = FactorySneeze.m4a; sourceTree = "<group>"; };
+		7D3441F61AC9A04100C358DD /* SneezeButtonImgOld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SneezeButtonImgOld.png; path = Graphics/SneezeButtonImgOld.png; sourceTree = "<group>"; };
+		7D3441F81ACB1C7D00C358DD /* FactorySneezeMale.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = FactorySneezeMale.m4a; sourceTree = "<group>"; };
+		7DE9E1781B0E0C7800EE2310 /* SneezeButtonImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SneezeButtonImg.png; sourceTree = "<group>"; };
+		7DE9E17A1B0F731500EE2310 /* FactorySneeze.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = FactorySneeze.m4a; sourceTree = "<group>"; };
 		7DECF2AD1ACC62F20082788A /* BlessYou.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = BlessYou.m4a; sourceTree = "<group>"; };
 		7DF0A3981AC1A3BD00AF1EFA /* Sneezer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sneezer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DF0A39C1AC1A3BD00AF1EFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -146,8 +150,10 @@
 			isa = PBXGroup;
 			children = (
 				7DECF2AD1ACC62F20082788A /* BlessYou.m4a */,
-				7D3441F81ACB1C7D00C358DD /* FactorySneeze.m4a */,
-				7D3441F61AC9A04100C358DD /* SneezeButtonImg.png */,
+				7D3441F81ACB1C7D00C358DD /* FactorySneezeMale.m4a */,
+				7DE9E17A1B0F731500EE2310 /* FactorySneeze.m4a */,
+				7DE9E1781B0E0C7800EE2310 /* SneezeButtonImg.png */,
+				7D3441F61AC9A04100C358DD /* SneezeButtonImgOld.png */,
 				7BD49C221AD028F500700A0E /* Pathogen1@2x.png */,
 				7BD49C231AD028F500700A0E /* Pathogen2@2x.png */,
 				7BD49C211AD028F500700A0E /* Pathogen3@2x.png */,
@@ -312,15 +318,17 @@
 			files = (
 				7B25BFD41B03C4D5008214D0 /* angel_wings.png in Resources */,
 				7BD49C281AD028F500700A0E /* Pathogen3@2x.png in Resources */,
+				7DE9E17B1B0F731500EE2310 /* FactorySneeze.m4a in Resources */,
+				7DE9E1791B0E0C7800EE2310 /* SneezeButtonImg.png in Resources */,
 				7B25BFDA1B03C4E0008214D0 /* img_sneezing2.png in Resources */,
-				7D3441F91ACB1C7E00C358DD /* FactorySneeze.m4a in Resources */,
+				7D3441F91ACB1C7E00C358DD /* FactorySneezeMale.m4a in Resources */,
 				7DECF2AE1ACC62F20082788A /* BlessYou.m4a in Resources */,
 				7B25BFD21B03C46D008214D0 /* CloudExplosion@2x.png in Resources */,
 				7DF0A3A31AC1A3BD00AF1EFA /* Main.storyboard in Resources */,
 				7B25BFD61B03C4DA008214D0 /* Angel@2x.png in Resources */,
 				7BD49C2A1AD028F500700A0E /* Pathogen2@2x.png in Resources */,
 				7DF0A3A81AC1A3BD00AF1EFA /* LaunchScreen.xib in Resources */,
-				7D3441F71AC9A04100C358DD /* SneezeButtonImg.png in Resources */,
+				7D3441F71AC9A04100C358DD /* SneezeButtonImgOld.png in Resources */,
 				7DF0A3A51AC1A3BD00AF1EFA /* Images.xcassets in Resources */,
 				7BD49C291AD028F500700A0E /* Pathogen1@2x.png in Resources */,
 			);
