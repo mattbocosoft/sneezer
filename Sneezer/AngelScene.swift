@@ -120,6 +120,12 @@ class AngelScene: SKScene {
 					
 					yImpulse = CGFloat(-20)
 				}
+
+				if physicsBody.velocity.dx > 0 {
+					node.travelLeft()
+				} else {
+					node.travelRight()
+				}
 				
 				physicsBody.applyImpulse(CGVectorMake(xImpulse, yImpulse))
 			}

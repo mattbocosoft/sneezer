@@ -58,6 +58,20 @@ class AngelNode: SKSpriteNode {
 		let animationAction = SKAction.animateWithTextures(self.flyingFrames, timePerFrame: 0.05)
 		self.runAction(SKAction.repeatActionForever(animationAction), withKey: "flyingAngel")
 	}
+	
+	func travelLeft() {
+
+		if self.xScale != -1.0 {
+			self.runAction(SKAction.scaleXTo(-1.0, duration: 0.05))
+		}
+	}
+	
+	func travelRight() {
+
+		if self.xScale != 1.0 {
+			self.runAction(SKAction.scaleXTo(1.0, duration: 0.05))
+		}
+	}
 
 	func poof(completion block: (() -> Void)!) {
 
