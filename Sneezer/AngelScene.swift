@@ -11,7 +11,7 @@ import SpriteKit
 
 class AngelScene: SKScene {
 
-	private var nodes: [SKNode]?
+	private var nodes: [AngelNode]?
 	
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
@@ -36,44 +36,99 @@ class AngelScene: SKScene {
 		// 3 Set the friction of that physicsBody to 0
 		self.physicsBody?.friction = 0.0
 		
-		self.nodes = [SKSpriteNode]()
+		self.nodes = [AngelNode]()
 		
 		for i in 0...5 {
 			let angelNode = AngelNode()
 			angelNode.position = CGPointMake(self.frame.size.width/3, self.frame.size.height/3);
-			self.addNode(angelNode)
+			self.addAngelNode(angelNode)
 		}
-	}
-
-	func removeAngel() {
-
-		if let lastAngel = self.nodes?.last as? AngelNode {
-			
-			lastAngel.poof()
-			self.nodes?.removeLast()
-		}
-	}
-
-	func angelCount() -> Int {
-
-		return nodes?.count ?? 0
 	}
 
 	//MARK: Helper Function
 
-	private func addNode(node: SKNode) {
+	private func addAngelNode(node: AngelNode) {
 
-		node.alpha = 0.0
 		self.addChild(node)
-		node.runAction(SKAction.fadeInWithDuration(1.0))
-
-		var circle = CAShapeLayer()
-		circle.frame = CGRectInset(CGRectMake(160, 160, 320, 320), 50, 50)
-		let circlePath = UIBezierPath(ovalInRect:circle.bounds).CGPath
-
-		node.runAction(SKAction.repeatActionForever(SKAction.followPath(circlePath, asOffset: false, orientToPath: true, speed: 40)))
+		node.startFlying()
 		
+		node.alpha = 0.0
+		let fadeIn = SKAction.fadeInWithDuration(1.0)
+		
+		node.runAction(fadeIn)
+		
+		let maximumImpulse = UInt32(40)
+		let xImpulse = CGFloat(arc4random_uniform(maximumImpulse)) - CGFloat(maximumImpulse)/2.0
+		let yImpulse = CGFloat(arc4random_uniform(maximumImpulse)) - CGFloat(maximumImpulse)/2.0
+		node.physicsBody?.applyImpulse(CGVectorMake(xImpulse, yImpulse))
+
 		self.nodes?.append(node)
 	}
+	
+	func removeAngel(completion block: (() -> Void)!) {
+		
+		if let lastAngel = self.nodes?.last {
 
+			self.nodes?.removeLast()
+
+			lastAngel.poof(completion: { () -> Void in
+
+				block()
+			})
+		} else {
+			block()
+		}
+	}
+	
+	func angelCount() -> Int {
+		
+		return nodes?.count ?? 0
+	}
+	
+	//MARK: -
+
+	override func update(currentTime: NSTimeInterval) {
+		
+		let maxSpeed: CGFloat = 200.0
+		let minSpeed: CGFloat = 10.0
+		for node in self.nodes! {
+			
+			if let physicsBody = node.physicsBody {
+				
+				let totalSpeed = sqrt(physicsBody.velocity.dx * physicsBody.velocity.dx + physicsBody.velocity.dy * physicsBody.velocity.dy)
+				
+				let xSpeed = fabs(physicsBody.velocity.dx)
+				let ySpeed = fabs(physicsBody.velocity.dy)
+				
+				var xImpulse = CGFloat(0)
+				var yImpulse = CGFloat(0)
+				let maximumImpulse = UInt32(40)
+				
+				if xSpeed < minSpeed {
+					
+					xImpulse = CGFloat(arc4random_uniform(maximumImpulse)) - CGFloat(maximumImpulse)/2.0
+					
+				} else if xSpeed > maxSpeed {
+					xImpulse = CGFloat(-20)
+				}
+				
+				if ySpeed < minSpeed {
+					
+					yImpulse = CGFloat(arc4random_uniform(maximumImpulse)) - CGFloat(maximumImpulse)/2.0
+					
+				} else if ySpeed > maxSpeed {
+					
+					yImpulse = CGFloat(-20)
+				}
+
+				if physicsBody.velocity.dx > 0 {
+					node.travelLeft()
+				} else {
+					node.travelRight()
+				}
+				
+				physicsBody.applyImpulse(CGVectorMake(xImpulse, yImpulse))
+			}
+		}
+	}
 }

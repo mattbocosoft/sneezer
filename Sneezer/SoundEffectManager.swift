@@ -33,21 +33,63 @@ class SoundEffectManager: NSObject, AVAudioPlayerDelegate {
 
 	static let sharedInstance = SoundEffectManager()
 
-	var audioPlayer: AVAudioPlayer?
+	var blessYouAudioPlayer: AVAudioPlayer?
+	var sneezeAudioPlayer: AVAudioPlayer?
+	
+	override init() {
 
-	func playSoundEffect(type: SoundEffectType) {
-		
-		let path: NSString? = NSBundle.mainBundle().pathForResource(type.description, ofType: "m4a")!
+		var error: NSError?
+		AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, error: &error)
+		AVAudioSession.sharedInstance().setActive(true, error: &error)
+
+		super.init()
+
+		self.loadBlessYouAudioPlayer()
+		self.loadSneezeAudioPlayer()
+	}
+	
+	private func loadBlessYouAudioPlayer() {
+
+		let path: NSString? = NSBundle.mainBundle().pathForResource(SoundEffectType.BlessYou.description, ofType: "m4a")!
 		let url = NSURL(fileURLWithPath: path! as String)
 		
 		var error:NSError?
-		self.audioPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
+		self.blessYouAudioPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
 		if error != nil {
 			println("Error creating sound effect \(error?.localizedDescription)")
 			return
 		}
-		self.audioPlayer?.delegate = self
-		self.audioPlayer?.play()
+		self.blessYouAudioPlayer?.delegate = self
+		self.blessYouAudioPlayer?.prepareToPlay()
+	}
+
+	private func loadSneezeAudioPlayer() {
+		
+		let path: NSString? = NSBundle.mainBundle().pathForResource(SoundEffectType.Sneeze.description, ofType: "m4a")!
+		let url = NSURL(fileURLWithPath: path! as String)
+		
+		var error:NSError?
+		self.sneezeAudioPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
+		if error != nil {
+			println("Error creating sound effect \(error?.localizedDescription)")
+			return
+		}
+		self.sneezeAudioPlayer?.delegate = self
+		self.sneezeAudioPlayer?.prepareToPlay()
+	}
+
+	func playSoundEffect(type: SoundEffectType) {
+
+		switch type {
+		case .BlessYou:
+			self.blessYouAudioPlayer?.play()
+			break
+		case .Sneeze:
+			self.sneezeAudioPlayer?.play()
+			break
+		default:
+			break
+		}
 	}
 
 	//MARK: AVAudioPlayer Delegate
@@ -56,13 +98,15 @@ class SoundEffectManager: NSObject, AVAudioPlayerDelegate {
 		
 //		Blessings.enabled = true
 		
-		if player.url.lastPathComponent?.stringByDeletingPathExtension == SoundEffectType.Sneeze.description {
+		if player == self.sneezeAudioPlayer {
 
 			NSNotificationCenter.defaultCenter().postNotificationName(SoundEffectNotifications.SneezeDidFinish, object: self)
+			self.sneezeAudioPlayer?.prepareToPlay()
 
-		} else if player.url.lastPathComponent?.stringByDeletingPathExtension == SoundEffectType.BlessYou.description {
-			
+		} else if player == self.blessYouAudioPlayer {
+
 			NSNotificationCenter.defaultCenter().postNotificationName(SoundEffectNotifications.BlessingDidFinish, object: self)
+			self.blessYouAudioPlayer?.prepareToPlay()
 		}
 	}
 }

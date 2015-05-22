@@ -9,59 +9,94 @@
 import UIKit
 import SpriteKit
 
-class AngelNode: SKNode {
+class AngelNode: SKSpriteNode {
 
-	private var angelSpriteNode: SKSpriteNode?
-	private var cloudSpriteNode: SKSpriteNode?
+	private let angelTexture = SKTexture(imageNamed: "Angel.png")
+	private var flyingFrames = [SKTexture]()
+	private let cloudTexture = SKTexture(imageNamed: "CloudExplosion.png")
 
-	override init() {
+	private var cloudNode: SKSpriteNode!
 
-		super.init()
+	init() {
 
 		let name = "Angel"
+		let textureSize = CGSizeMake(100, 100)
+
+		super.init(texture: angelTexture, color: nil, size: textureSize)
+
+		// Set-up flying animation
+		let animationImageCount = 10
+		for index in 1...animationImageCount {
+
+			let textureName = "angel_animation\(index).png"
+			self.flyingFrames.append(SKTexture(imageNamed: textureName))
+		}
+		for index in 0..<animationImageCount {
+			
+			let textureName = "angel_animation\(animationImageCount - index).png"
+			self.flyingFrames.append(SKTexture(imageNamed: textureName))
+		}
+
 		self.name = name
+		self.physicsBody = SKPhysicsBody(circleOfRadius: self.frame.size.width/3)
+		self.physicsBody?.friction = 0.0
+		self.physicsBody?.restitution = 1.0
+		self.physicsBody?.linearDamping = 0.0
+		self.physicsBody?.allowsRotation = false
 
-		self.angelSpriteNode = SKSpriteNode(imageNamed: "\(name).png")
-		self.angelSpriteNode?.size = CGSizeMake(150, 150)
-		self.addChild(self.angelSpriteNode!)
+		SKTexture.preloadTextures([self.angelTexture, self.cloudTexture], withCompletionHandler: { () -> Void in
+		})
 
-		self.angelSpriteNode?.physicsBody = SKPhysicsBody(circleOfRadius: self.angelSpriteNode!.frame.size.width/3)
-		self.angelSpriteNode?.physicsBody?.friction = 0.0
-		self.angelSpriteNode?.physicsBody?.restitution = 1.0
-		self.angelSpriteNode?.physicsBody?.linearDamping = 0.0
+		let cloudName = "CloudExplosion"
+		self.cloudNode = SKSpriteNode(texture: self.cloudTexture, size: self.size)
+		self.cloudNode.name = name
+		self.cloudNode.alpha = 0.0
+	}
+	
+	func startFlying() {
+
+		let animationAction = SKAction.animateWithTextures(self.flyingFrames, timePerFrame: 0.05)
+		self.runAction(SKAction.repeatActionForever(animationAction), withKey: "flyingAngel")
+	}
+	
+	func travelLeft() {
+
+		if self.xScale != -1.0 {
+			self.runAction(SKAction.scaleXTo(-1.0, duration: 0.05))
+		}
+	}
+	
+	func travelRight() {
+
+		if self.xScale != 1.0 {
+			self.runAction(SKAction.scaleXTo(1.0, duration: 0.05))
+		}
 	}
 
-	func poof() {
-		
-		let name = "CloudExplosion"
-		
-		let cloudNode = SKSpriteNode(imageNamed: "\(name).png")
-		cloudNode.size = CGSizeMake(150, 150)
-		cloudNode.name = name
-		cloudNode.alpha = 0.0
-		self.addChild(cloudNode)
+	func poof(completion block: (() -> Void)!) {
+
+		self.addChild(self.cloudNode)
 
 		let inDuration = 0.2
 		let outDuration = 1.0
 
-		// Angel Fade
-		self.angelSpriteNode?.runAction(SKAction.fadeOutWithDuration(inDuration))
+		let cloudMaximumScale = CGFloat(1.5)
 
-		// Cloud Fade Sequence
-		let fadeInAction = SKAction.fadeInWithDuration(inDuration)
-		let fadeOutAction = SKAction.fadeOutWithDuration(outDuration)
-		
-		let fadeSequence = SKAction.sequence([fadeInAction, fadeOutAction])
-		cloudNode.runAction(fadeSequence)
+		let inGroup = SKAction.group([SKAction.fadeInWithDuration(inDuration), SKAction.scaleTo(cloudMaximumScale, duration: inDuration)])
+		self.cloudNode?.runAction(inGroup, completion: { () -> Void in
 
-		// Cloud Scale Sequence
-		let scaleUpAction = SKAction.scaleBy(1.5, duration: inDuration)
-		let scaleDownAction = SKAction.scaleBy(0.8, duration: outDuration)
-		
-		let scaleSequence = SKAction.sequence([scaleUpAction, scaleDownAction])
-		cloudNode.runAction(scaleSequence)
+			self.cloudNode.removeFromParent()
+			self.texture = self.cloudTexture
+			self.setScale(cloudMaximumScale)
 
-		self.cloudSpriteNode = cloudNode
+			let fadeOutAction = SKAction.fadeOutWithDuration(outDuration)
+			let scaleDownAction = SKAction.scaleTo(0.8, duration: outDuration)
+			let outGroup = SKAction.group([fadeOutAction, scaleDownAction])
+
+			self.runAction(outGroup, completion: { () -> Void in
+				self.runAction(SKAction.removeFromParent(), completion: block)
+			})
+		})
 	}
 
 	required init(coder aDecoder: NSCoder) {

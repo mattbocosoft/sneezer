@@ -12,9 +12,9 @@ import CoreLocation
 
 protocol SneezeEmitterDelegate {
 
-	func sneezeEmitterStartedSneezing()
 	func sneezeEmitterSneezingFailed(errorMessage: String)
-	func sneezeEmitterStoppedSneezing()
+	func sneezeEmitterWillSneeze()
+	func sneezeEmitterDidSneeze()
 }
 
 class SneezeEmitter: NSObject, CBPeripheralManagerDelegate {
@@ -22,7 +22,7 @@ class SneezeEmitter: NSObject, CBPeripheralManagerDelegate {
 	var delegate: SneezeEmitterDelegate?
 
 	private var beaconManager: CBPeripheralManager?
-	private var continuousSneezing: Bool = false
+	
 
 	init(delegate: SneezeEmitterDelegate?) {
 
@@ -32,8 +32,6 @@ class SneezeEmitter: NSObject, CBPeripheralManagerDelegate {
 
 		// Set-up sneeze emission
 		self.beaconManager = CBPeripheralManager(delegate: self, queue: nil)
-
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: "sneezeSoundEffectFinished", name: SoundEffectNotifications.SneezeDidFinish, object: nil)
 	}
 
 	//MARK: Sneeze Emission
@@ -44,45 +42,9 @@ class SneezeEmitter: NSObject, CBPeripheralManagerDelegate {
 			
 			self.delegate?.sneezeEmitterSneezingFailed("Bluetooth must be enabled to sneeze")
 			return
-			
 		}
 
-		if self.continuousSneezing == false {
-
-			self.delegate?.sneezeEmitterStartedSneezing()
-		}
-
-		SoundEffectManager.sharedInstance.playSoundEffect(SoundEffectType.Sneeze)
-	}
-
-	func sneezeContinuously() {
-
-		// Already sneezing
-		if self.continuousSneezing {
-			return
-		}
-
-		if self.beaconManager?.state != CBPeripheralManagerState.PoweredOn {
-			
-			self.delegate?.sneezeEmitterSneezingFailed("Bluetooth must be enabled to sneeze")
-			return
-			
-		}
-
-		self.delegate?.sneezeEmitterStartedSneezing()
-		self.continuousSneezing = true
-		self.sneezeOnce()
-	}
-	
-	func stopContinuouslySneezing() {
-
-		self.continuousSneezing = false
-	}
-
-	//MARK: Sound Effect Notification
-
-	func sneezeSoundEffectFinished() {
-
+		self.delegate?.sneezeEmitterWillSneeze()
 		self.emitBeacon(duration: 1.0)
 	}
 
@@ -100,13 +62,15 @@ class SneezeEmitter: NSObject, CBPeripheralManagerDelegate {
 		
 		// The region's peripheral data contains the CoreBluetooth-specific data we need to advertise.
 		if peripheralData != nil {
-			
+
+			self.delegate?.sneezeEmitterWillSneeze()
 			self.beaconManager?.startAdvertising(peripheralData)
 		}
 
 		if self.beaconManager == nil {
 
 			self.delegate?.sneezeEmitterSneezingFailed("Could not initialize beacons")
+			return
 		}
 
 		// If duration is 0, then emit sneezing beacon indefinitely
@@ -122,19 +86,7 @@ class SneezeEmitter: NSObject, CBPeripheralManagerDelegate {
 	private func stopBeacon() {
 		
 		self.beaconManager?.stopAdvertising()
-
-		if self.continuousSneezing {
-			
-			let randomSneezeInterval: NSTimeInterval = 10
-			let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(randomSneezeInterval * Double(NSEC_PER_SEC)))
-			dispatch_after(delayTime, dispatch_get_main_queue()) {
-				
-				self.sneezeOnce()
-			}
-		} else {
-
-			self.delegate?.sneezeEmitterStoppedSneezing()
-		}
+		self.delegate?.sneezeEmitterDidSneeze()
 	}
 
 	//MARK: CBPeripheralManager Delegate Functions

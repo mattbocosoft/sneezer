@@ -18,6 +18,9 @@ class InfectedViewController: UIViewController, SneezeEmitterDelegate {
 	var sneezeEmitter: SneezeEmitter?
 	var delegate: InfectedViewControllerDelegate?
 
+	private var pathogenScene: PathogenScene?
+	private var continuousSneezing: Bool = false
+
 	//MARK: View Lifecycle
 	override func loadView() {
 
@@ -30,12 +33,15 @@ class InfectedViewController: UIViewController, SneezeEmitterDelegate {
 
 		// Be the Beacon
 		self.sneezeEmitter = SneezeEmitter(delegate: self)
+
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "sneezeDetected", name: SneezeDetectionNotifications.SneezeDetected, object: nil)
     }
 	
 	override func viewDidAppear(animated: Bool) {
+
 		super.viewDidAppear(animated)
 
-		self.sneezeEmitter?.sneezeContinuously()
+		self.sneezeContinuously()
 	}
 
 	override func viewWillLayoutSubviews() {
@@ -50,11 +56,11 @@ class InfectedViewController: UIViewController, SneezeEmitterDelegate {
 			skView.showsNodeCount = false
 			
 			// Create and configure the scene.
-			let scene = PathogenScene(size: skView.bounds.size)
-			scene.scaleMode = SKSceneScaleMode.AspectFill
+			self.pathogenScene = PathogenScene(size: skView.bounds.size)
+			self.pathogenScene?.scaleMode = SKSceneScaleMode.AspectFill
 			
 			// Present the scene.
-			skView.presentScene(scene)
+			skView.presentScene(self.pathogenScene)
 		}
 	}
 
@@ -63,17 +69,71 @@ class InfectedViewController: UIViewController, SneezeEmitterDelegate {
 		// Dispose of any resources that can be recreated.
 	}
 
+	//MARK: Sneeze Detection
+	
+	func sneezeDetected() {
+
+		self.playBlessYouSoundEffect()
+	}
+	
+	func playBlessYouSoundEffect() {
+		
+		let soundEffectAction = SKAction.playSoundFileNamed("BlessYou.m4a", waitForCompletion: true)
+		self.pathogenScene?.runAction(soundEffectAction)
+	}
+
 	//MARK: User Interaction
 
 	@IBAction func userTappedClose() {
 
 		self.delegate?.infectedViewControllerCompleted()
 	}
+	
+	//MARK: Continuous sneezing
+
+	func sneezeContinuously() {
+		
+		// Already sneezing
+		if self.continuousSneezing {
+			return
+		}
+
+		self.continuousSneezing = true
+		self.playSneezeSoundEffect { () -> Void in
+			self.sneezeEmitter?.sneezeOnce()
+		}
+	}
+	
+	func playSneezeSoundEffect(completion block: (() -> Void)!) {
+
+		let soundEffectAction = SKAction.playSoundFileNamed("FactorySneeze.m4a", waitForCompletion: true)
+		self.pathogenScene?.runAction(soundEffectAction, completion: block)
+	}
+
+	func stopContinuouslySneezing() {
+
+		self.continuousSneezing = false
+	}
 
 	//MARK: Sneeze Emitter Delegate
-	
-	func sneezeEmitterStartedSneezing() {
 
+	func sneezeEmitterWillSneeze() {
+		
+	}
+
+	func sneezeEmitterDidSneeze() {
+
+		if self.continuousSneezing {
+			
+			let randomSneezeInterval: NSTimeInterval = 10
+			let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(randomSneezeInterval * Double(NSEC_PER_SEC)))
+			dispatch_after(delayTime, dispatch_get_main_queue()) {
+				
+				self.playSneezeSoundEffect { () -> Void in
+					self.sneezeEmitter?.sneezeOnce()
+				}
+			}
+		}
 	}
 	
 	func sneezeEmitterSneezingFailed(errorMessage: String) {

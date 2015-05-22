@@ -71,13 +71,15 @@ class PathogenScene: SKScene, SKPhysicsContactDelegate {
 
 	override func update(currentTime: NSTimeInterval) {
 
-		let maxSpeed: CGFloat = 250.0
+		let maxSpeed: CGFloat = 200.0
 		let minSpeed: CGFloat = 10.0
 		for node in (self.children as! [SKSpriteNode]) {
 
 			if let physicsBody = node.physicsBody {
 
-				let xSpeed = fabs(physicsBody.velocity.dx) //sqrt(physicsBody.velocity.dx * physicsBody.velocity.dx + physicsBody.velocity.dy * physicsBody.velocity.dy)
+				let totalSpeed = sqrt(physicsBody.velocity.dx * physicsBody.velocity.dx + physicsBody.velocity.dy * physicsBody.velocity.dy)
+
+				let xSpeed = fabs(physicsBody.velocity.dx)
 				let ySpeed = fabs(physicsBody.velocity.dy)
 
 				var xImpulse = CGFloat(0)
@@ -87,18 +89,25 @@ class PathogenScene: SKScene, SKPhysicsContactDelegate {
 				if xSpeed < minSpeed {
 
 					xImpulse = CGFloat(arc4random_uniform(maximumImpulse)) - CGFloat(maximumImpulse)/2.0
+
+				} else if xSpeed > maxSpeed {
+					xImpulse = CGFloat(-20)
 				}
 
 				if ySpeed < minSpeed {
 
 					yImpulse = CGFloat(arc4random_uniform(maximumImpulse)) - CGFloat(maximumImpulse)/2.0
+
+				} else if ySpeed > maxSpeed {
+
+					yImpulse = CGFloat(-20)
 				}
 
-				node.physicsBody?.applyImpulse(CGVectorMake(xImpulse, yImpulse))
+				physicsBody.applyImpulse(CGVectorMake(xImpulse, yImpulse))
 
 				if(xImpulse != 0 || yImpulse != 0) {
 
-					node.physicsBody?.applyAngularImpulse(self.randomAngularImpulse())
+					physicsBody.applyAngularImpulse(self.randomAngularImpulse())
 				}
 			}
 		}

@@ -20,6 +20,16 @@
 		7B5F730F1B03F19E003AF0F1 /* SneezeEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F730E1B03F19E003AF0F1 /* SneezeEmitter.swift */; };
 		7B5F73111B03F1C8003AF0F1 /* SneezeDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F73101B03F1C8003AF0F1 /* SneezeDetector.swift */; };
 		7B5F73131B03FD4E003AF0F1 /* SoundEffectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F73121B03FD4E003AF0F1 /* SoundEffectManager.swift */; };
+		7BBBEA601B0F74F80013AF7A /* angel_animation10.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BBBEA561B0F74F80013AF7A /* angel_animation10.png */; };
+		7BBBEA611B0F74F80013AF7A /* angel_animation9.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BBBEA571B0F74F80013AF7A /* angel_animation9.png */; };
+		7BBBEA621B0F74F80013AF7A /* angel_animation8.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BBBEA581B0F74F80013AF7A /* angel_animation8.png */; };
+		7BBBEA631B0F74F80013AF7A /* angel_animation4.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BBBEA591B0F74F80013AF7A /* angel_animation4.png */; };
+		7BBBEA641B0F74F80013AF7A /* angel_animation6.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BBBEA5A1B0F74F80013AF7A /* angel_animation6.png */; };
+		7BBBEA651B0F74F80013AF7A /* angel_animation7.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BBBEA5B1B0F74F80013AF7A /* angel_animation7.png */; };
+		7BBBEA661B0F74F80013AF7A /* angel_animation3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BBBEA5C1B0F74F80013AF7A /* angel_animation3.png */; };
+		7BBBEA671B0F74F80013AF7A /* angel_animation5.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BBBEA5D1B0F74F80013AF7A /* angel_animation5.png */; };
+		7BBBEA681B0F74F80013AF7A /* angel_animation2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BBBEA5E1B0F74F80013AF7A /* angel_animation2.png */; };
+		7BBBEA691B0F74F80013AF7A /* angel_animation1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BBBEA5F1B0F74F80013AF7A /* angel_animation1.png */; };
 		7BD49C141ACF283300700A0E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BD49C131ACF283300700A0E /* AVFoundation.framework */; };
 		7BD49C161ACF349400700A0E /* PathogenScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD49C151ACF349400700A0E /* PathogenScene.swift */; };
 		7BD49C181ACF354400700A0E /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BD49C171ACF354400700A0E /* SpriteKit.framework */; };
@@ -66,6 +76,16 @@
 		7B5F730E1B03F19E003AF0F1 /* SneezeEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SneezeEmitter.swift; sourceTree = "<group>"; };
 		7B5F73101B03F1C8003AF0F1 /* SneezeDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SneezeDetector.swift; sourceTree = "<group>"; };
 		7B5F73121B03FD4E003AF0F1 /* SoundEffectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundEffectManager.swift; sourceTree = "<group>"; };
+		7BBBEA561B0F74F80013AF7A /* angel_animation10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = angel_animation10.png; path = "Resources/Angel Animation/angel_animation10.png"; sourceTree = "<group>"; };
+		7BBBEA571B0F74F80013AF7A /* angel_animation9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = angel_animation9.png; path = "Resources/Angel Animation/angel_animation9.png"; sourceTree = "<group>"; };
+		7BBBEA581B0F74F80013AF7A /* angel_animation8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = angel_animation8.png; path = "Resources/Angel Animation/angel_animation8.png"; sourceTree = "<group>"; };
+		7BBBEA591B0F74F80013AF7A /* angel_animation4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = angel_animation4.png; path = "Resources/Angel Animation/angel_animation4.png"; sourceTree = "<group>"; };
+		7BBBEA5A1B0F74F80013AF7A /* angel_animation6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = angel_animation6.png; path = "Resources/Angel Animation/angel_animation6.png"; sourceTree = "<group>"; };
+		7BBBEA5B1B0F74F80013AF7A /* angel_animation7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = angel_animation7.png; path = "Resources/Angel Animation/angel_animation7.png"; sourceTree = "<group>"; };
+		7BBBEA5C1B0F74F80013AF7A /* angel_animation3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = angel_animation3.png; path = "Resources/Angel Animation/angel_animation3.png"; sourceTree = "<group>"; };
+		7BBBEA5D1B0F74F80013AF7A /* angel_animation5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = angel_animation5.png; path = "Resources/Angel Animation/angel_animation5.png"; sourceTree = "<group>"; };
+		7BBBEA5E1B0F74F80013AF7A /* angel_animation2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = angel_animation2.png; path = "Resources/Angel Animation/angel_animation2.png"; sourceTree = "<group>"; };
+		7BBBEA5F1B0F74F80013AF7A /* angel_animation1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = angel_animation1.png; path = "Resources/Angel Animation/angel_animation1.png"; sourceTree = "<group>"; };
 		7BD49C131ACF283300700A0E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		7BD49C151ACF349400700A0E /* PathogenScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathogenScene.swift; sourceTree = "<group>"; };
 		7BD49C171ACF354400700A0E /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
@@ -146,6 +166,23 @@
 			name = "Helper Classes";
 			sourceTree = "<group>";
 		};
+		7BBBEA551B0F74A00013AF7A /* Flying Angel Animation */ = {
+			isa = PBXGroup;
+			children = (
+				7BBBEA561B0F74F80013AF7A /* angel_animation10.png */,
+				7BBBEA571B0F74F80013AF7A /* angel_animation9.png */,
+				7BBBEA581B0F74F80013AF7A /* angel_animation8.png */,
+				7BBBEA591B0F74F80013AF7A /* angel_animation4.png */,
+				7BBBEA5A1B0F74F80013AF7A /* angel_animation6.png */,
+				7BBBEA5B1B0F74F80013AF7A /* angel_animation7.png */,
+				7BBBEA5C1B0F74F80013AF7A /* angel_animation3.png */,
+				7BBBEA5D1B0F74F80013AF7A /* angel_animation5.png */,
+				7BBBEA5E1B0F74F80013AF7A /* angel_animation2.png */,
+				7BBBEA5F1B0F74F80013AF7A /* angel_animation1.png */,
+			);
+			name = "Flying Angel Animation";
+			sourceTree = "<group>";
+		};
 		7DECF2AC1ACC4D650082788A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +198,7 @@
 				7B25BFD51B03C4DA008214D0 /* Angel@2x.png */,
 				7B25BFD31B03C4D5008214D0 /* angel_wings.png */,
 				7B25BFD81B03C4E0008214D0 /* img_sneezing2.png */,
+				7BBBEA551B0F74A00013AF7A /* Flying Angel Animation */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -322,15 +360,25 @@
 				7DE9E1791B0E0C7800EE2310 /* SneezeButtonImg.png in Resources */,
 				7B25BFDA1B03C4E0008214D0 /* img_sneezing2.png in Resources */,
 				7D3441F91ACB1C7E00C358DD /* FactorySneezeMale.m4a in Resources */,
+				7BBBEA681B0F74F80013AF7A /* angel_animation2.png in Resources */,
 				7DECF2AE1ACC62F20082788A /* BlessYou.m4a in Resources */,
+				7BBBEA621B0F74F80013AF7A /* angel_animation8.png in Resources */,
 				7B25BFD21B03C46D008214D0 /* CloudExplosion@2x.png in Resources */,
 				7DF0A3A31AC1A3BD00AF1EFA /* Main.storyboard in Resources */,
 				7B25BFD61B03C4DA008214D0 /* Angel@2x.png in Resources */,
 				7BD49C2A1AD028F500700A0E /* Pathogen2@2x.png in Resources */,
+				7BBBEA631B0F74F80013AF7A /* angel_animation4.png in Resources */,
 				7DF0A3A81AC1A3BD00AF1EFA /* LaunchScreen.xib in Resources */,
 				7D3441F71AC9A04100C358DD /* SneezeButtonImgOld.png in Resources */,
+				7BBBEA691B0F74F80013AF7A /* angel_animation1.png in Resources */,
+				7BBBEA611B0F74F80013AF7A /* angel_animation9.png in Resources */,
+				7BBBEA671B0F74F80013AF7A /* angel_animation5.png in Resources */,
+				7BBBEA651B0F74F80013AF7A /* angel_animation7.png in Resources */,
+				7BBBEA601B0F74F80013AF7A /* angel_animation10.png in Resources */,
+				7BBBEA661B0F74F80013AF7A /* angel_animation3.png in Resources */,
 				7DF0A3A51AC1A3BD00AF1EFA /* Images.xcassets in Resources */,
 				7BD49C291AD028F500700A0E /* Pathogen1@2x.png in Resources */,
+				7BBBEA641B0F74F80013AF7A /* angel_animation6.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
