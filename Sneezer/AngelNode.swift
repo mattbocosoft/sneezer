@@ -12,6 +12,7 @@ import SpriteKit
 class AngelNode: SKSpriteNode {
 
 	private let angelTexture = SKTexture(imageNamed: "Angel.png")
+	private var flyingFrames = [SKTexture]()
 	private let cloudTexture = SKTexture(imageNamed: "CloudExplosion.png")
 
 	private var cloudNode: SKSpriteNode!
@@ -22,6 +23,19 @@ class AngelNode: SKSpriteNode {
 		let textureSize = CGSizeMake(100, 100)
 
 		super.init(texture: angelTexture, color: nil, size: textureSize)
+
+		// Set-up flying animation
+		let animationImageCount = 10
+		for index in 1...animationImageCount {
+
+			let textureName = "angel_animation\(index).png"
+			self.flyingFrames.append(SKTexture(imageNamed: textureName))
+		}
+		for index in 0..<animationImageCount {
+			
+			let textureName = "angel_animation\(animationImageCount - index).png"
+			self.flyingFrames.append(SKTexture(imageNamed: textureName))
+		}
 
 		self.name = name
 		self.physicsBody = SKPhysicsBody(circleOfRadius: self.frame.size.width/3)
@@ -37,6 +51,12 @@ class AngelNode: SKSpriteNode {
 		self.cloudNode = SKSpriteNode(texture: self.cloudTexture, size: self.size)
 		self.cloudNode.name = name
 		self.cloudNode.alpha = 0.0
+	}
+	
+	func startFlying() {
+
+		let animationAction = SKAction.animateWithTextures(self.flyingFrames, timePerFrame: 0.05)
+		self.runAction(SKAction.repeatActionForever(animationAction), withKey: "flyingAngel")
 	}
 
 	func poof(completion block: (() -> Void)!) {

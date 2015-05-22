@@ -50,6 +50,7 @@ class AngelScene: SKScene {
 	private func addAngelNode(node: AngelNode) {
 
 		self.addChild(node)
+		node.startFlying()
 		
 		node.alpha = 0.0
 		let fadeIn = SKAction.fadeInWithDuration(1.0)
