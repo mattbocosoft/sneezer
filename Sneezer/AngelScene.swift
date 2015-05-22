@@ -87,6 +87,67 @@ class AngelScene: SKScene {
 	
 	//MARK: -
 
+	override func didEvaluateActions() {
+
+		let maxSpeed: CGFloat = 200.0
+		let minSpeed: CGFloat = 75.0
+
+		for node in self.nodes! {
+			
+			if let physicsBody = node.physicsBody {
+
+				let xSpeed = fabs(physicsBody.velocity.dx)
+				let ySpeed = fabs(physicsBody.velocity.dy)
+
+				if physicsBody.velocity.dx > maxSpeed {
+
+					physicsBody.velocity = CGVectorMake(maxSpeed, physicsBody.velocity.dy)
+
+				} else if physicsBody.velocity.dx < -maxSpeed {
+
+					physicsBody.velocity = CGVectorMake(-maxSpeed, physicsBody.velocity.dy)
+
+				} else if physicsBody.velocity.dx > 0 {
+
+					if physicsBody.velocity.dx < minSpeed {
+						
+						physicsBody.velocity = CGVectorMake(minSpeed, physicsBody.velocity.dy)
+					}
+					
+				} else {
+
+					if physicsBody.velocity.dx > -minSpeed {
+						
+						physicsBody.velocity = CGVectorMake(-minSpeed, physicsBody.velocity.dy)
+					}
+				}
+				
+				if physicsBody.velocity.dy > maxSpeed {
+
+					physicsBody.velocity = CGVectorMake(physicsBody.velocity.dx, maxSpeed)
+
+				} else if physicsBody.velocity.dy < -maxSpeed {
+
+					physicsBody.velocity = CGVectorMake(physicsBody.velocity.dx, -maxSpeed)
+
+				} else if physicsBody.velocity.dy > 0 {
+					
+					if physicsBody.velocity.dy < minSpeed {
+						
+						physicsBody.velocity = CGVectorMake(physicsBody.velocity.dx, minSpeed)
+					}
+					
+				} else {
+
+					if physicsBody.velocity.dy > -minSpeed {
+						
+						physicsBody.velocity = CGVectorMake(physicsBody.velocity.dx, -minSpeed)
+					}
+				}
+			}
+		}
+	}
+
 	override func update(currentTime: NSTimeInterval) {
 		
 		let maxSpeed: CGFloat = 200.0
@@ -95,39 +156,11 @@ class AngelScene: SKScene {
 			
 			if let physicsBody = node.physicsBody {
 				
-				let totalSpeed = sqrt(physicsBody.velocity.dx * physicsBody.velocity.dx + physicsBody.velocity.dy * physicsBody.velocity.dy)
-				
-				let xSpeed = fabs(physicsBody.velocity.dx)
-				let ySpeed = fabs(physicsBody.velocity.dy)
-				
-				var xImpulse = CGFloat(0)
-				var yImpulse = CGFloat(0)
-				let maximumImpulse = UInt32(40)
-				
-				if xSpeed < minSpeed {
-					
-					xImpulse = CGFloat(arc4random_uniform(maximumImpulse)) - CGFloat(maximumImpulse)/2.0
-					
-				} else if xSpeed > maxSpeed {
-					xImpulse = CGFloat(-20)
-				}
-				
-				if ySpeed < minSpeed {
-					
-					yImpulse = CGFloat(arc4random_uniform(maximumImpulse)) - CGFloat(maximumImpulse)/2.0
-					
-				} else if ySpeed > maxSpeed {
-					
-					yImpulse = CGFloat(-20)
-				}
-
 				if physicsBody.velocity.dx > 0 {
 					node.travelLeft()
 				} else {
 					node.travelRight()
 				}
-				
-				physicsBody.applyImpulse(CGVectorMake(xImpulse, yImpulse))
 			}
 		}
 	}
